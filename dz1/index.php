@@ -28,6 +28,7 @@ echo "<br>";
 
 // Задание 4
 $age = 34;
+echo $age . "<br>";
 if (18 <= $age and $age <= 65) {
     echo 'Вам   еще работать   и   работать';
 } elseif ($age > 65 ) {
