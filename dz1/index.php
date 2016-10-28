@@ -1,8 +1,8 @@
 <?php
 // Задание 1
-$name ='Денис';
+$name = 'Денис';
 $age = 26;
-echo 'Меня зовут: '. $name . "<br>";
+echo 'Меня зовут: ' . $name . "<br>";
 print "Мне $age лет" . "<br>";
 echo '"!|\\/\'"\\' . "<br>";
 echo "<br>";
@@ -14,7 +14,18 @@ $pencil = 40;
 
 $paints = $pictures - ($felt + $pencil);
 echo $paints;
+
 echo "<br>";
 echo "<br>";
+
+// 3
+define ("const1",'Hello World!',true) ;
+echo defined('const1') . "<br>";
+echo  const1;
+
+echo "<br>";
+echo "<br>";
+
+// 4
 
 ?>
