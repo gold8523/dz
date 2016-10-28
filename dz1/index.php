@@ -18,7 +18,7 @@ echo $paints;
 echo "<br>";
 echo "<br>";
 
-// 3
+// Задание 3
 define ("const1",'Hello World!',true) ;
 echo defined('const1') . "<br>";
 echo  const1;
@@ -26,6 +26,9 @@ echo  const1;
 echo "<br>";
 echo "<br>";
 
-// 4
-
+// Задание 4
+$age = 34;
+if (18 < $age and $age <= 65) {
+    echo 'Вам   еще работать   и   работать';
+}
 ?>
