@@ -6,4 +6,12 @@ echo 'Меня зовут: '. $name . "<br>";
 print "Мне $age лет" . "<br>";
 echo '"!|\\/\'"\\' . "<br>";
 
+// Задание 2
+$pictures = 80;
+$felt = 23;
+$pencil = 40;
+
+$paints = $pictures - ($felt + $pencil);
+echo $paints;
+
 ?>
