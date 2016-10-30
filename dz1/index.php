@@ -82,14 +82,12 @@ $bmw =[
     'speed' => 120,
     'doors' => 5,
     'year' => 2015,
-    'name' => $toyota
 ];
 $toyota = [
     'model' => 'Camry',
     'speed' => 150,
     'doors' => 5,
     'year' => 2016,
-    'name' => $opel
 ];
 $opel = [
     'model' => 'Astra',
