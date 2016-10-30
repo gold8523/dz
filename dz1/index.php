@@ -21,9 +21,9 @@ echo "<br>";
 echo "<br>";
 
 // Задание 3
-define ("const1",'Hello World!',true) ;
-echo defined('const1') . "<br>";
-echo  const1;
+define ("CONST1",'Hello World!',true) ;
+echo defined('CONST1') . "<br>";
+echo  CONST1;
 
 echo "<br>";
 echo "<br>";
@@ -72,4 +72,27 @@ switch ($day) {
     default;
         echo 'Неизвестный день';
 }
+
+// 6
+
+$bmw =[
+    'model' => 'X5',
+    'speed' => 120,
+    'doors' => 5,
+    'year' => 2015
+];
+$toyota = [
+    'model' => 'Camry',
+    'speed' => 150,
+    'doors' => 5,
+    'year' => 2016
+];
+$opel = [
+    'model' => 'Astra',
+    'speed' => 100,
+    'doors' => 3,
+    'year' => 2013
+];
+
+
 ?>
