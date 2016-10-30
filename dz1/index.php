@@ -73,19 +73,24 @@ switch ($day) {
         echo 'Неизвестный день';
 }
 
+echo "<br>";
+echo "<br>";
+
 // 6
 
 $bmw =[
     'model' => 'X5',
     'speed' => 120,
     'doors' => 5,
-    'year' => 2015
+    'year' => 2015,
+    'name' => $toyota
 ];
 $toyota = [
     'model' => 'Camry',
     'speed' => 150,
     'doors' => 5,
-    'year' => 2016
+    'year' => 2016,
+    'name' => $opel
 ];
 $opel = [
     'model' => 'Astra',
@@ -93,6 +98,30 @@ $opel = [
     'doors' => 3,
     'year' => 2013
 ];
-
+$car = [
+    'name' => [
+        'model' => 'X5',
+        'speed' => 120,
+        'doors' => 5,
+        'year' => 2015,
+        'name' => [
+            'model' => 'Camry',
+            'speed' => 150,
+            'doors' => 5,
+            'year' => 2016,
+            'name' => [
+                'model' => 'Astra',
+                'speed' => 100,
+                'doors' => 3,
+                'year' => 2013
+            ]
+        ]
+    ]
+];
+echo 'CAR bmw' . "<br>";
+foreach ($bmw as $item) {
+    echo $item . ' ';
+}
+echo "<br>;"
 
 ?>
