@@ -76,7 +76,7 @@ switch ($day) {
 echo "<br>";
 echo "<br>";
 
-// 6
+// Задание 6
 
 $bmw =[
     'model' => 'X5',
@@ -99,29 +99,29 @@ $opel = [
     'year' => 2013
 ];
 $car = [
-    'name' => [
-        'model' => 'X5',
-        'speed' => 120,
-        'doors' => 5,
-        'year' => 2015,
-        'name' => [
-            'model' => 'Camry',
-            'speed' => 150,
-            'doors' => 5,
-            'year' => 2016,
-            'name' => [
-                'model' => 'Astra',
-                'speed' => 100,
-                'doors' => 3,
-                'year' => 2013
-            ]
-        ]
-    ]
+    'bmw' => $bmw,
+    'toyota' => $toyota,
+    'opel' => $opel
 ];
-echo 'CAR bmw' . "<br>";
-foreach ($bmw as $item) {
+foreach ($car as $key => $value) {
+    echo "<br>" . 'CAR ' . $key  . "<br>";
+    foreach ($value as $item) {
+        echo $item . ' ';
+    }
+}
+
+echo "<br>";
+echo "<br>";
+
+
+// Задание 7
+// Задание 8
+$str = 'Привет мир меня зовут Денис';
+echo $str . "<br>";
+$arr = explode(' ', $str);
+foreach ($arr as $item) {
     echo $item . ' ';
 }
-echo "<br>;"
+
 
 ?>
