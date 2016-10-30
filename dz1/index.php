@@ -119,7 +119,7 @@ echo "<br>";
 echo "<br>";
 
 // Задание 8
-$str = 'Привет мир меня зовут Денис';
+$str = 'Привет мир меня зовут Денис трава море солнце песок автомобиль';
 echo $str . "<br>";
 
 $arr = explode(' ', $str);
@@ -128,12 +128,12 @@ echo "<br>";
 
 $len = count($arr);
 $arrRew = [];
-$i = 0;
 while ($len > -1) {
-    $arrRew [] = $arr[4 - $i];
-    $i++;
+    $arrRew [] = $arr[$len - 1];
     $len--;
 };
+print_r($arrRew);
+echo "<br>";
 
 $strRew = join(' | ', $arrRew);
 echo $strRew;
