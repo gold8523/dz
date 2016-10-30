@@ -118,9 +118,11 @@ echo "<br>";
 // Задание 8
 $str = 'Привет мир меня зовут Денис';
 echo $str . "<br>";
+
 $arr = explode(' ', $str);
-echo '<pre>';
 print_r($arr);
+echo "<br>";
+
 $len = count($arr);
 $arrRew = [];
 $i = 0;
@@ -129,5 +131,8 @@ while ($len > -1) {
     $i++;
     $len--;
 };
+
+$strRew = join(' | ', $arrRew);
+echo $strRew;
 
 ?>
