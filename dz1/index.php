@@ -129,7 +129,9 @@ echo "<br>";
 $len = count($arr);
 $arrRew = [];
 while ($len > -1) {
-    $arrRew [] = $arr[$len];
+    if (!empty($arr[$len])) {
+        $arrRew [] = $arr[$len];
+    }
     $len--;
 };
 print_r($arrRew);
