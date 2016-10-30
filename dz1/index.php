@@ -119,9 +119,15 @@ echo "<br>";
 $str = 'Привет мир меня зовут Денис';
 echo $str . "<br>";
 $arr = explode(' ', $str);
-foreach ($arr as $item) {
-    echo $item . ' ';
-}
-
+echo '<pre>';
+print_r($arr);
+$len = count($arr);
+$arrRew = [];
+$i = 0;
+while ($len > -1) {
+    $arrRew [] = $arr[4 - $i];
+    $i++;
+    $len--;
+};
 
 ?>
