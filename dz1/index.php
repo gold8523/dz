@@ -31,11 +31,11 @@ echo "<br>";
 // Задание 4
 $age = '34';
 echo $age . "<br>";
-if (18 <= $age and $age <= 65) {
+if ($age >= 18 and $age <= 65) {
     echo 'Вам   еще работать   и   работать';
 } elseif ($age > 65 ) {
     echo 'Вам   пора   на   пенсию';
-} elseif (1 <= $age and $age <= 17) {
+} elseif ($age >= 1 and $age <= 17) {
     echo 'Вам   ещё   рано   работать';
 } else {
     echo 'Неизвестный   возраст';
