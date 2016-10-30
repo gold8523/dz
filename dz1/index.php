@@ -13,7 +13,9 @@ $felt = 23;
 $pencil = 40;
 
 $paints = $pictures - ($felt + $pencil);
-echo $paints;
+echo "На школьной выставке $pictures рисунков. $felt из них выполнены фломастерами, $pencil карандашами, а остальные — красками. 
+Сколько рисунков, выполненные красками, на школьной выставке?"."<br>";
+echo 'Решение: '.$pictures.' - '."($felt + $pencil)".' = '.$paints;
 
 echo "<br>";
 echo "<br>";
