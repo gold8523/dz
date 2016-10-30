@@ -42,7 +42,7 @@ if (18 <= $age and $age <= 65) {
 echo "<br>";
 echo "<br>";
 
-// 5
+// Задание 5
 $day = 7;
 echo $day . "<br>";
 switch ($day) {
