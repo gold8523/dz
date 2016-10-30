@@ -115,6 +115,23 @@ echo "<br>";
 
 
 // Задание 7
+
+for ($a = 1; $a <= 10; $a++) {
+    for ($b = 1; $b <= 10; $b++) {
+        $result = $a * $b;
+        if ($a % 2 == 0 and $b % 2 == 0) {
+            echo "$a * $b = ( $result )<br>";
+        } elseif ($a % 2 == 1 and $b % 2 == 1 ) {
+            echo "$a * $b = [ $result ]<br>";
+        } else {
+            echo "$a * $b = $result <br>";
+        }
+    }
+};
+
+echo "<br>";
+echo "<br>";
+
 // Задание 8
 $str = 'Привет мир меня зовут Денис';
 echo $str . "<br>";
