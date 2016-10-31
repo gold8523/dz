@@ -103,16 +103,20 @@ echo "<br>";
 
 // Задание 7
 for ($a = 1; $a <= 10; $a++) {
+    echo "<table border = '1px'>";
+    echo "<tr>";
     for ($b = 1; $b <= 10; $b++) {
         $result = $a * $b;
         if ($a % 2 == 0 and $b % 2 == 0) {
-            echo "$a * $b = ( $result )<br>";
+            echo "<td width='50px'>( $result )</td>" . PHP_EOL;
         } elseif ($a % 2 == 1 and $b % 2 == 1 ) {
-            echo "$a * $b = [ $result ]<br>";
+            echo "<td width='50px'>[ $result ]</td>" . PHP_EOL;
         } else {
-            echo "$a * $b = $result <br>";
+            echo "<td width='50px'>$result</td>" . PHP_EOL;
         }
     }
+    echo "</tr>" . PHP_EOL;
+    echo "</table>";
 };
 
 echo "<br>";
