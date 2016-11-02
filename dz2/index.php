@@ -1,9 +1,14 @@
 <?php
-function anyStr ($arrStr) {
-    var_dump($arrStr);
-    foreach ($arrStr as $item) {
-        echo "<p>". $item ."</p>";
+function anyStr ($arrStr, $b) {
+    if ($b == true) {
+        $ret = join(' ', $arrStr);
+        return $ret;
+    } else {
+        foreach ($arrStr as $item) {
+            echo "<p>". $item ."</p>";
+        }
     }
 };
 $a = ["Привет мир", "Hello world", "any string", "good day"];
-anyStr($a);
+$c = true;
+echo anyStr($a, $c);
