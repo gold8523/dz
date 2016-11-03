@@ -14,10 +14,29 @@ function anyStr ($arrStr, $b) {
 //Задание 2
 function anyMath ($arr, $n) {
     $len = count($arr);
+    $res = $arr[0];
     switch ($n) {
         case '+':
-            for ($i = 0; $i < $len; $i++) {
-                $res = $arr[$i] + $res;
+            for ($i = 1; $i < $len; $i++) {
+                $res = $res + $arr[$i];
+            }
+            echo $res;
+            break;
+        case '-':
+            for ($i = 1; $i < $len; $i++) {
+                $res = $res - $arr[$i];
+            }
+            echo $res;
+            break;
+        case '*':
+            for ($i = 1; $i < $len; $i++) {
+                $res = $res * $arr[$i];
+            }
+            echo $res;
+            break;
+        case '/':
+            for ($i = 1; $i < $len; $i++) {
+                $res = $res / $arr[$i];
             }
             echo $res;
             break;
