@@ -7,5 +7,5 @@ echo anyStr($a, $c);
 echo "<br>";
 //Задание 2
 $v = [1000, 2, 4, 5, 5];
-$d = '/';
+$d = '+';
 echo  anyMath($v, $d);
