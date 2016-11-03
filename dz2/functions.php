@@ -21,7 +21,6 @@ function anyMath ($arr, $n)
         $gt = gettype($in);
         if ($gt != 'integer' && $gt != 'double') {
             echo 'Должны быть только числа ';
-            echo $gt;
             return;
         }
     }
