@@ -10,3 +10,18 @@ function anyStr ($arrStr, $b) {
         }
     }
 };
+
+//Задание 2
+function anyMath ($arr, $n) {
+    $len = count($arr);
+    switch ($n) {
+        case '+':
+            for ($i = 0; $i < $len; $i++) {
+                $res = $arr[$i] + $res;
+            }
+            echo $res;
+            break;
+        default;
+            echo 'D';
+    }
+};
