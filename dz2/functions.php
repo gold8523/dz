@@ -55,3 +55,40 @@ function anyMath ($arr, $n)
 
     }
 };
+//Задание 3
+function calcEverything()
+{
+    $one = func_get_arg(0);
+    $arrAgr = func_get_args();
+    $len = count($arrAgr);
+    $res = func_get_arg(1);
+    switch ($one) {
+        case '+':
+            for ($i = 2; $i < $len; $i++) {
+                $res = $res + $arrAgr[$i];
+            }
+            echo $res;
+            break;
+        case '-':
+            for ($i = 2; $i < $len; $i++) {
+                $res = $res - $arrAgr[$i];
+            }
+            echo $res;
+            break;
+        case '*':
+            for ($i = 2; $i < $len; $i++) {
+                $res = $res * $arrAgr[$i];
+            }
+            echo $res;
+            break;
+        case '/':
+            for ($i = 2; $i < $len; $i++) {
+                $res = $res / $arrAgr[$i];
+            }
+            echo $res;
+            break;
+        default;
+            echo 'Сначала укажите знак математической операции';
+
+    }
+}
