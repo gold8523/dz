@@ -17,8 +17,6 @@ echo "<br>";
 multiTable(12, 10);
 echo "<br>";
 //Задание 5
-//pal('Кони топот z');
-//;
 result(pal('Live not on evil'));
 echo "<br>";
 //Задание 6
