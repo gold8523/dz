@@ -91,3 +91,19 @@ function calcEverything()
 
     }
 }
+//Задание 4
+function multiTable($r, $c) {
+    if (gettype($r) != 'integer' || gettype($c) != 'integer') {
+        echo 'Error';
+    }
+    for ($a = 1; $a <= $r; $a++) {
+        echo "<table border = '1px'>";
+        echo "<tr>";
+        for ($b = 1; $b <= $c; $b++) {
+            $result = $a * $b;
+            echo "<td width='50px'>$result</td>" . PHP_EOL;
+        }
+        echo "</tr>" . PHP_EOL;
+        echo "</table>";
+    }
+};
