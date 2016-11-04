@@ -20,7 +20,7 @@ echo "<br>";
 result(pal('Live not on evil'));
 echo "<br>";
 //Задание 6
-
+myTime();
 echo "<br>";
 //Задание 7
 

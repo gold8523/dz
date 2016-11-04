@@ -132,4 +132,8 @@ function result($d) {
         echo 'Строка, одинаково не читающаяся в обоих направлениях.';
     }
 };
-
+//Задание 6
+function myTime() {
+    echo date('d.m.Y H:i'). "<br>";
+    echo mktime(0, 0, 0, 02, 24, 16);
+}
