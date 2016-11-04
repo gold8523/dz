@@ -16,3 +16,21 @@ echo "<br>";
 //Задание 4
 multiTable(12, 10);
 echo "<br>";
+//Задание 5
+//pal('Кони топот z');
+pal('Life not on evil');
+//result();
+echo "<br>";
+//Задание 6
+
+echo "<br>";
+//Задание 7
+
+echo "<br>";
+//Задание 8
+
+echo "<br>";
+//Задание 9
+
+echo "<br>";
+//Задание 10

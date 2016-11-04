@@ -108,3 +108,16 @@ function multiTable($tr, $td) {
         }
     }
 };
+//Задание 5
+function pal($str) {
+    $str = lcfirst($str);
+    $arrStr = explode(' ', $str);
+    $newStr = join('', $arrStr);
+    $strRev = strrev($newStr);
+    if ($newStr != $strRev) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
