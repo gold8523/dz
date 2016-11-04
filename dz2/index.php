@@ -18,8 +18,8 @@ multiTable(12, 10);
 echo "<br>";
 //Задание 5
 //pal('Кони топот z');
-pal('Life not on evil');
-//result();
+//;
+result(pal('Live not on evil'));
 echo "<br>";
 //Задание 6
 

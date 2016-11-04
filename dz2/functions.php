@@ -1,6 +1,11 @@
 <?php
 // Задание 1
-function anyStr ($arrStr, $b)
+/** @noinspection PhpInconsistentReturnPointsInspection
+ * @param $arrStr
+ * @param $b
+ * @return string
+ */
+function anyStr($arrStr, $b)
 {
     if ($b == true) {
         $ret = join(' ', $arrStr);
@@ -12,7 +17,7 @@ function anyStr ($arrStr, $b)
     }
 };
 //Задание 2
-function anyMath ($arr, $n)
+function anyMath($arr, $n)
 {
     $len = count($arr);
     $res = $arr[0];
@@ -118,6 +123,13 @@ function pal($str) {
         return false;
     } else {
         return true;
+    }
+};
+function result($d) {
+    if ($d == true) {
+        echo 'Строка, одинаково читающаяся в обоих направлениях.';
+    } else {
+        echo 'Строка, одинаково не читающаяся в обоих направлениях.';
     }
 };
 
