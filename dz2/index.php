@@ -12,5 +12,7 @@ anyMath($v, $d);
 echo "<br>";
 //Задание 3
 calcEverything('+', 1, 2, 3, 5.2);
+echo "<br>";
 //Задание 4
-multiTable(4, 5);
+multiTable(12, 10);
+echo "<br>";

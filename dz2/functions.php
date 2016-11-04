@@ -95,15 +95,16 @@ function calcEverything()
 function multiTable($tr, $td) {
     if (gettype($tr) != 'integer' || gettype($td) != 'integer') {
         echo 'Error';
-    }
-    for ($a = 1; $a <= $tr; $a++) {
-        echo "<table border = '1px'>";
-        echo "<tr>";
-        for ($b = 1; $b <= $td; $b++) {
-            $result = $a * $b;
-            echo "<td width='50px'>$result</td>" . PHP_EOL;
+    } else {
+        for ($a = 1; $a <= $tr; $a++) {
+            echo "<table border = '1px'>";
+            echo "<tr>";
+            for ($b = 1; $b <= $td; $b++) {
+                $result = $a * $b;
+                echo "<td width='50px'>$result</td>" . PHP_EOL;
+            }
+            echo "</tr>" . PHP_EOL;
+            echo "</table>";
         }
-        echo "</tr>" . PHP_EOL;
-        echo "</table>";
     }
 };
