@@ -146,3 +146,14 @@ function anyStrin($one) {
     $newOne = str_replace('Две', 'Три', $one);
     echo $newOne;
 }
+//Задание 8
+function reG($st) {
+    preg_match('/[0-9]+\s/', $st, $resReg);
+    $newRes = $resReg[0];
+    $regTwo = preg_match('/:\)/', $st);
+    if ($regTwo == true) {
+        echo 'C';
+    } elseif ($newRes > 1000) {
+        echo 'Сеть есть';
+    }
+}
