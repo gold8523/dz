@@ -137,3 +137,12 @@ function myTime() {
     echo date('d.m.Y H:i'). "<br>";
     echo mktime(0, 0, 0, 02, 24, 16);
 }
+//Задание 7
+function anyString($any) {
+    $newAny = str_replace('К', '', $any);
+    echo $newAny . "<br>";
+}
+function anyStrin($one) {
+    $newOne = str_replace('Две', 'Три', $one);
+    echo $newOne;
+}

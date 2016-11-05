@@ -23,7 +23,10 @@ echo "<br>";
 myTime();
 echo "<br>";
 //Задание 7
-
+$str1 = 'Карл у Клары украл Кораллы';
+$str2 = 'Две бутылки лимонада';
+anyString($str1);
+anyStrin($str2);
 echo "<br>";
 //Задание 8
 
