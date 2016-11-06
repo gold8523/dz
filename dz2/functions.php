@@ -108,7 +108,7 @@ function multiTable($tr, $td) {
                 $result = $a * $b;
                 echo "<td width='50px'>$result</td>";
             }
-            echo "</tr>" . PHP_EOL;
+            echo "</tr>";
         }
         echo "</table>";
     }
