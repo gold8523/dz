@@ -36,3 +36,4 @@ echo "<br>";
 openFile();
 echo "<br>";
 //Задание 10
+newFile();

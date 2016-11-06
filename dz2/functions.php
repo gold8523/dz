@@ -180,9 +180,6 @@ function sm() {
 ████████████████████████████████████████";
     echo $smile;
 }
-/**
- * @param $st
- */
 function reG($st) {
     preg_match('/[0-9]+\s/', $st, $resReg);
     $newRes = $resReg[0];
@@ -195,10 +192,16 @@ function reG($st) {
 }
 //Задание 9
 function openFile() {
-    //$file = "text.txt";
     $fop = fopen('text.txt', 'r');
     if (!empty($fop)) {
         $fre = fread($fop, filesize('text.txt'));
     }
     echo $fre;
+}
+//Задание 10
+function newFile() {
+    $anytext = 'Hello again!!';
+    $newf = fopen('newtext.txt', 'w+');
+    fwrite($newf, $anytext);
+    readfile('newtext.txt');
 }
