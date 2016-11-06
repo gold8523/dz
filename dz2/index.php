@@ -30,9 +30,9 @@ anyString($str1);
 anyStrin($str2);
 echo "<br>";
 //Задание 8
-reg('RX packets:950381 errors:0 dropped:0 overruns:0 frame:0. :)');
+reG('RX packets:950381 errors:0 dropped:0 overruns:0 frame:0. :)');
 echo "<br>";
 //Задание 9
-
+openFile();
 echo "<br>";
 //Задание 10

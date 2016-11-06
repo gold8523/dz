@@ -158,7 +158,7 @@ function anyStrin($one) {
 }
 //Задание 8
 function sm() {
-    echo "████████████████████████████████████████<br>
+    $smile = "████████████████████████████████████████<br>
 █████████████▀▀░░░░░░░░░░▀▀▀████████████<br>
 █████████▀▀░░░░░░░░░░░░░░░░░░░▀█████████<br>
 ███████▀░░░░░░░░░░░░░░░░░░░░░░░░▀███████<br>
@@ -178,7 +178,11 @@ function sm() {
 █████████▄░░░▀▀█▄▄▄▄▄▄▄▄▀▀░░░░▄█████████<br>
 ████████████▄▄▄░░░░░░░░░░▄▄▄████████████<br>
 ████████████████████████████████████████";
+    echo $smile;
 }
+/**
+ * @param $st
+ */
 function reG($st) {
     preg_match('/[0-9]+\s/', $st, $resReg);
     $newRes = $resReg[0];
@@ -188,4 +192,13 @@ function reG($st) {
     } elseif ($newRes > 1000) {
         echo 'Сеть есть';
     }
+}
+//Задание 9
+function openFile() {
+    //$file = "text.txt";
+    $fop = fopen('text.txt', 'r');
+    if (!empty($fop)) {
+        $fre = fread($fop, filesize('text.txt'));
+    }
+    echo $fre;
 }
