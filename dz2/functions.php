@@ -116,7 +116,6 @@ function multiTable($tr, $td) {
 //Задание 5
 function pal($str) {
     $str = mb_strtolower($str);
-    echo $str . "<br>";
     //$arrStr = explode(' ', $str);
     //$newStr = join('', $arrStr);
     //$strRev = strrev($newStr);
@@ -128,7 +127,6 @@ function pal($str) {
         $len--;
     };
     $newStr = join('', $arrRew);
-    echo $newStr . "<br>";
     if ($newStr != $str) {
         return false;
     } else {
