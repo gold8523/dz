@@ -101,21 +101,21 @@ function multiTable($tr, $td) {
     if (gettype($tr) != 'integer' || gettype($td) != 'integer') {
         echo 'Error';
     } else {
+        echo "<table border = '1px'>";
         for ($a = 1; $a <= $tr; $a++) {
-            echo "<table border = '1px'>";
             echo "<tr>";
             for ($b = 1; $b <= $td; $b++) {
                 $result = $a * $b;
-                echo "<td width='50px'>$result</td>" . PHP_EOL;
+                echo "<td width='50px'>$result</td>";
             }
             echo "</tr>" . PHP_EOL;
-            echo "</table>";
         }
+        echo "</table>";
     }
 };
 //Задание 5
 function pal($str) {
-    $str = mb_strtolower($str);
+    $str = strtolower($str);
     //$arrStr = explode(' ', $str);
     //$newStr = join('', $arrStr);
     //$strRev = strrev($newStr);
