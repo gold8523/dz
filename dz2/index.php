@@ -17,7 +17,8 @@ echo "<br>";
 multiTable(12, 10);
 echo "<br>";
 //Задание 5
-result(pal('Live not on evil'));
+//result(pal('Live not on evil'));
+result(pal('Кони топот инок'));
 echo "<br>";
 //Задание 6
 myTime();

@@ -115,11 +115,21 @@ function multiTable($tr, $td) {
 };
 //Задание 5
 function pal($str) {
-    $str = lcfirst($str);
-    $arrStr = explode(' ', $str);
-    $newStr = join('', $arrStr);
-    $strRev = strrev($newStr);
-    if ($newStr != $strRev) {
+    $str = mb_strtolower($str);
+    echo $str . "<br>";
+    //$arrStr = explode(' ', $str);
+    //$newStr = join('', $arrStr);
+    //$strRev = strrev($newStr);
+    $arrStr =  preg_split('//u', $str);
+    $len = count($arrStr);
+    $arrRew = [];
+    while ($len > -1) {
+        $arrRew [] = $arrStr[$len];
+        $len--;
+    };
+    $newStr = join('', $arrRew);
+    echo $newStr . "<br>";
+    if ($newStr != $str) {
         return false;
     } else {
         return true;
