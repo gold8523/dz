@@ -115,7 +115,7 @@ function multiTable($tr, $td) {
 };
 //Задание 5
 function pal($str) {
-    $str = strtolower($str);
+    $str = mb_strtolower($str);
     //$arrStr = explode(' ', $str);
     //$newStr = join('', $arrStr);
     //$strRev = strrev($newStr);
