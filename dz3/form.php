@@ -8,30 +8,43 @@
     <title>Регистрация</title>
 </head>
 <body>
+<?php
+//require_once '../Faker/src/autoload.php';
+//$faker = Faker\Factory::create('ru_RU');
+//echo $faker->firstName();
+//?>
 <form action="" method="post">
     <table>
         <tr>
-            <td>Введите имя:</td>
-            <td>
-                <input class="text" type="text" autofocus/>
-            </td>
-        </tr>
-        <tr>
             <td>Введите логин:</td>
             <td>
-                <input class="text" type="text" autofocus/>
+                <label>
+                    <input type="text" autofocus/>
+                </label>
             </td>
         </tr>
         <tr>
             <td>Введите пароль:</td>
             <td>
-                <input id="pass" type="password"/>
+                <label >
+                    <input type="password"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>Введите имя:</td>
+            <td>
+                <label>
+                    <input class="text" type="text" autofocus/>
+                </label>
             </td>
         </tr>
         <tr>
             <td>Введите возраст:</td>
             <td>
-                <input class="text" type="text"/>
+                <label>
+                    <input class="text" type="text"/>
+                </label>
             </td>
         </tr>
         <tr>
@@ -43,7 +56,9 @@
         <tr>
             <td>Расскажите о себе:</td>
             <td>
-                <textarea cols="40" rows="10"></textarea>
+                <label>
+                    <textarea cols="40" rows="10"></textarea>
+                </label>
             </td>
         </tr>
         <tr>

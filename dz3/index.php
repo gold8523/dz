@@ -13,13 +13,17 @@
         <tr>
             <td>Логин:</td>
             <td>
-                <input type="text">
+                <label>
+                    <input type="text">
+                </label>
             </td>
         </tr>
         <tr>
             <td>Пароль:</td>
             <td>
-                <input type="text">
+                <label>
+                    <input type="text">
+                </label>
             </td>
         </tr>
         <tr>
