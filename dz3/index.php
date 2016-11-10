@@ -8,8 +8,29 @@
     <title>Document</title>
 </head>
 <body>
-<form>
-
+<form method="post" action="functions.php">
+    <table>
+        <tr>
+            <td>Логин:</td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>Пароль:</td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Зарегистрироваться"/>
+            </td>
+            <td>
+                <input type="reset" value="Очистить форму"/>
+            </td>
+        </tr>
+    </table>
 </form>
 <p>
     <a href="form.php">Зарегистрироваться</a>
