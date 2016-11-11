@@ -1,4 +1,7 @@
 <?php
+require_once '../Faker/src/autoload.php';
+$faker = Faker\Factory::create('ru_RU');
+
 $host = 'localhost';
 $base = 'phpkurs';
 $user = 'root';
@@ -28,4 +31,31 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 $connection->query($sql);
 
-$sqlusers = 'inser into `users` (`username`, `age`, )';
+$sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
+$sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
+
+$countUsers = 0;
+$countLogin = 0;
+
+for ($i = 0; $i < 10; $i++ ) {
+    $stmt = $connection->prepare($sqlUsers);
+
+    $username = $faker->firstName();
+    $age = $faker->randomDigitNotNull;
+    $info = $faker->text(200);
+
+    $stmt->bind_param('ssi', $username, $age, $info);
+    $stmt->execute();
+    $countUsers++;
+
+    $stmt = $connection->prepare($sqlLogin);
+
+    $login = $faker->userName;
+    $pass = $faker->password(8);
+
+    $stmt->bind_param('ss', $login, $pass);
+    $stmt->execute();
+    $countLogin++;
+}
+echo 'Добавлено в таблицу юзерс:' . $countUsers;
+echo 'Добавлено в таблицу логин:' . $countLogin;

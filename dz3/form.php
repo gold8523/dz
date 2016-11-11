@@ -8,11 +8,6 @@
     <title>Регистрация</title>
 </head>
 <body>
-<?php
-//require_once '../Faker/src/autoload.php';
-//$faker = Faker\Factory::create('ru_RU');
-//echo $faker->firstName();
-//?>
 <form action="" method="post">
     <table>
         <tr>
