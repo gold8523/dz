@@ -8,13 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-<form method="post" action="functions.php">
+<form method="post" action="action1.php">
     <table>
         <tr>
             <td>Логин:</td>
             <td>
                 <label>
-                    <input type="text">
+                    <input type="text" name="log">
                 </label>
             </td>
         </tr>
@@ -22,13 +22,13 @@
             <td>Пароль:</td>
             <td>
                 <label>
-                    <input type="text">
+                    <input type="text" name="password">
                 </label>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="submit" value="Войти"/>
+                <input type="submit" name="action" value="Войти"/>
             </td>
         </tr>
     </table>
