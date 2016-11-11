@@ -28,10 +28,7 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="Зарегистрироваться"/>
-            </td>
-            <td>
-                <input type="reset" value="Очистить форму"/>
+                <input type="submit" value="Войти"/>
             </td>
         </tr>
     </table>
