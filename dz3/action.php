@@ -1,4 +1,14 @@
 <?php
+$host = 'localhost';
+$base = 'phpkurs';
+$user = 'root';
+$pass = '';
+
+$connection = @new mysqli($host, $user, $pass, $base);
+if (mysqli_connect_errno()) {
+    die(mysqli_connect_error());
+}
+$connection->query('SET NAMES "UTF-8"');
 if (!empty($_POST)) {
     $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
     $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
