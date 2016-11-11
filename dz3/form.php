@@ -63,10 +63,10 @@
         </tr>
         <tr>
             <td>
-                <input class="sub" type="submit" value="Зарегистрироваться"/>
+                <input type="submit" value="Зарегистрироваться"/>
             </td>
             <td>
-                <input class="res" type="reset" value="Очистить форму"/>
+                <input type="reset" value="Очистить форму"/>
             </td>
         </tr>
     </table>
