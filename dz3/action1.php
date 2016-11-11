@@ -10,8 +10,22 @@ if (mysqli_connect_errno()) {
 }
 $connection->query('SET NAMES "UTF-8"');
 if (!empty($_POST)) {
-    $sql = 'SELECT * FROM `login`';
+    $sql = 'SELECT `login` FROM `login`';
     $result = $connection->query($sql);
     $loginAll = $result->fetch_all(MYSQLI_ASSOC);
-    echo '<pre>' . print_r($loginAll, true). '</pre>';
+    foreach ($loginAll as $item) {
+        if ($item == strip_tags($_POST['log'])) {
+            $sql = 'SELECT `login` FROM `login`';
+            $newResult = $connection->query($sql);
+            $newLoginAll = $newResult->fetch_all(MYSQLI_ASSOC);
+            foreach ($newLoginAll as $item) {
+                if ($item == strip_tags($_POST['password'])) {
+                    header('Location: gallery.php');
+                    exit();
+                }
+            }
+            echo 'Неверный пароль!';
+        }
+    }
+    echo 'Неверный логин!';
 }
