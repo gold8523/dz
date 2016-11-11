@@ -13,19 +13,22 @@ if (!empty($_POST)) {
     $sql = 'SELECT `login` FROM `login`';
     $result = $connection->query($sql);
     $loginAll = $result->fetch_all(MYSQLI_ASSOC);
-    foreach ($loginAll as $item) {
-        if ($item == strip_tags($_POST['log'])) {
-            $sql = 'SELECT `login` FROM `login`';
+    foreach ($loginAll as $value) {
+        foreach ($value as $item) {
+            if ($item ==strip_tags($_POST['log'])) {
+            $sql = 'SELECT `pass` FROM `login`';
             $newResult = $connection->query($sql);
             $newLoginAll = $newResult->fetch_all(MYSQLI_ASSOC);
-            foreach ($newLoginAll as $item) {
-                if ($item == strip_tags($_POST['password'])) {
-                    header('Location: gallery.php');
-                    exit();
+                foreach ($newLoginAll as $value) {
+                    foreach ($value as $item) {
+                        if ($item == strip_tags($_POST['password'])) {
+                            header('Location: gallery.php');
+                            exit();
+                        }
+                    }
                 }
             }
-            echo 'Неверный пароль!';
         }
     }
-    echo 'Неверный логин!';
+    echo 'Неверный логин или пароль!';
 }
