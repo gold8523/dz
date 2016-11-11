@@ -14,7 +14,7 @@
             <td>Введите логин:</td>
             <td>
                 <label>
-                    <input type="text" autofocus/>
+                    <input type="text" name="login" autofocus/>
                 </label>
             </td>
         </tr>
@@ -22,7 +22,7 @@
             <td>Введите пароль:</td>
             <td>
                 <label >
-                    <input type="password"/>
+                    <input type="password" name="pass"/>
                 </label>
             </td>
         </tr>
@@ -30,7 +30,7 @@
             <td>Введите имя:</td>
             <td>
                 <label>
-                    <input class="text" type="text" autofocus/>
+                    <input type="text" name="name"/>
                 </label>
             </td>
         </tr>
@@ -38,7 +38,7 @@
             <td>Введите возраст:</td>
             <td>
                 <label>
-                    <input class="text" type="text"/>
+                    <input type="text" name="age"/>
                 </label>
             </td>
         </tr>
@@ -52,7 +52,7 @@
             <td>Расскажите о себе:</td>
             <td>
                 <label>
-                    <textarea cols="40" rows="10"></textarea>
+                    <textarea cols="40" rows="10" name="info"></textarea>
                 </label>
             </td>
         </tr>

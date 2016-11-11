@@ -34,9 +34,6 @@ $connection->query($sql);
 $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
 $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
 
-$countUsers = 0;
-$countLogin = 0;
-
 for ($i = 0; $i < 10; $i++ ) {
     $stmt = $connection->prepare($sqlUsers);
 
@@ -57,5 +54,4 @@ for ($i = 0; $i < 10; $i++ ) {
     $stmt->execute();
     $countLogin++;
 }
-echo 'Добавлено в таблицу юзерс:' . $countUsers;
-echo 'Добавлено в таблицу логин:' . $countLogin;
+
