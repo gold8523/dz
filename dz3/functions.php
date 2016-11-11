@@ -18,3 +18,14 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 $connection->query($sql);
+
+$sql = "
+CREATE TABLE `login` (
+  `login` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
+$connection->query($sql);
+
+$sqlusers = 'inser into `users` (`username`, `age`, )';
