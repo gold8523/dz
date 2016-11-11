@@ -31,27 +31,46 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 $connection->query($sql);
 
-$sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
-$sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
+//$sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
+//$sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
+//
+//for ($i = 0; $i < 10; $i++ ) {
+//    $stmt = $connection->prepare($sqlUsers);
+//
+//    $username = $faker->firstName();
+//    $age = $faker->randomDigitNotNull;
+//    $info = $faker->text($maxNbChars = 200);
+//
+//    $stmt->bind_param('ssi', $username, $age, $info);
+//    $stmt->execute();
+//
+//    $stmt = $connection->prepare($sqlLogin);
+//
+//    $login = $faker->userName;
+//    $pass = $faker->password(8);
+//
+//    $stmt->bind_param('ss', $login, $pass);
+//    $stmt->execute();
+//}
 
-for ($i = 0; $i < 10; $i++ ) {
-    $stmt = $connection->prepare($sqlUsers);
+if (!empty($_POST)) {
+        $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
+        $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
 
-    $username = $faker->firstName();
-    $age = $faker->randomDigitNotNull;
-    $info = $faker->text($maxNbChars = 200);
+        $stmt = $connection->prepare($sqlUsers);
 
-    $stmt->bind_param('ssi', $username, $age, $info);
-    $stmt->execute();
-    $countUsers++;
+        $username = strip_tags($_POST[$name]);
+        $age = strip_tags($_POST[$age]);
+        $info = strip_tags($_POST[$info]);
 
-    $stmt = $connection->prepare($sqlLogin);
+        $stmt->bind_param('ssi', $username, $age, $info);
+        $stmt->execute();
 
-    $login = $faker->userName;
-    $pass = $faker->password(8);
+        $stmt = $connection->prepare($sqlLogin);
 
-    $stmt->bind_param('ss', $login, $pass);
-    $stmt->execute();
-    $countLogin++;
+        $login = strip_tags($_POST[$login]);
+        $pass = strip_tags($_POST[$pass]);
+
+        $stmt->bind_param('ss', $login, $pass);
+        $stmt->execute();
 }
-

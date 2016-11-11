@@ -8,7 +8,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="functions.php" method="post">
     <table>
         <tr>
             <td>Введите логин:</td>
