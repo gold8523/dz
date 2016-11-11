@@ -42,7 +42,7 @@ for ($i = 0; $i < 10; $i++ ) {
 
     $username = $faker->firstName();
     $age = $faker->randomDigitNotNull;
-    $info = $faker->text(200);
+    $info = $faker->text($maxNbChars = 200);
 
     $stmt->bind_param('ssi', $username, $age, $info);
     $stmt->execute();
