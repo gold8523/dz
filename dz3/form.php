@@ -8,7 +8,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-<form action="action.php" method="post">
+<form enctype="multipart/form-data" action="action.php" method="post">
     <table>
         <tr>
             <td>Введите логин:</td>
@@ -45,7 +45,8 @@
         <tr>
             <td>Добавьте фотографию:</td>
             <td>
-                <input type="file"/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="3145728" />
+                <input type="file" name="picture"/>
             </td>
         </tr>
         <tr>
