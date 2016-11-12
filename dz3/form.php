@@ -53,7 +53,7 @@
             <td>Расскажите о себе:</td>
             <td>
                 <label>
-                    <textarea cols="40" rows="10" name="info"></textarea>
+                    <textarea name="info" cols="40" rows="10"></textarea>
                 </label>
             </td>
         </tr>
