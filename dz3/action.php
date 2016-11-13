@@ -32,8 +32,13 @@ if (!empty($_POST)) {
 //
 //    header('Location: .');
 //    exit();
-//    print_r($_POST['picture']);
-
-    $f = move_uploaded_file($_FILES['picture']['name'], '/photos');
-    var_dump($f);
+    if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
+        && $_FILES['picture']['type'] != "image/png") {
+        echo  'error';
+    } else {
+        $uploads_dir = 'C:/OpenServer/domains/dz/dz3/photos';
+        $tmp_name = $_FILES['picture']['tmp_name'];
+        $name = $_POST['login'] . $_FILES['picture']['name'];
+        move_uploaded_file($tmp_name, "$uploads_dir/$name");
+    }
 }

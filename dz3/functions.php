@@ -42,30 +42,27 @@ $connection->query($sql);
 
 $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
 $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
-$sqlImages = 'insert into `images` (`img_name`) value (?)';
 
-for ($i = 0; $i < 10; $i++ ) {
-    $stmt = $connection->prepare($sqlUsers);
-
-    $username = $faker->firstName();
-    $age = $faker->randomDigitNotNull;
-    $info = $faker->text($maxNbChars = 200);
-
-    $stmt->bind_param('sis', $username, $age, $info);
-    $stmt->execute();
-
-    $stmt = $connection->prepare($sqlLogin);
-
-    $login = $faker->userName;
-    $pass = $faker->password(8);
-
-    $stmt->bind_param('ss', $login, $pass);
-    $stmt->execute();
-
-    $stmt = $connection->prepare($sqlImages);
-    $imgName = $faker->image($dir = '../dz3/photos', $width = 640, $height = 480);
-
-    $stmt->bind_param('s', $imgName);
-}
+//for ($i = 0; $i < 10; $i++ ) {
+//    $stmt = $connection->prepare($sqlUsers);
+//
+//    $username = $faker->firstName();
+//    $age = $faker->randomDigitNotNull;
+//    $info = $faker->text($maxNbChars = 200);
+//
+//    $stmt->bind_param('sis', $username, $age, $info);
+//    $stmt->execute();
+//
+//    $stmt = $connection->prepare($sqlLogin);
+//
+//    $login = $faker->userName;
+//    $pass = $faker->password(8);
+//
+//    $stmt->bind_param('ss', $login, $pass);
+//    $stmt->execute();
+//
+//    $imgName = $faker->image($dir = '../dz3/photos', $width = 640, $height = 480);
+//
+//}
 //$connection->query('truncate table `users`');
 //$connection->query('truncate table `login`');
