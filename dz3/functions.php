@@ -108,3 +108,15 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
     header('Location: .');
     exit();
 }
+
+if (!empty($_POST) && $_POST['action'] == 'Переименовать') {
+    $sqlImgEdit = 'UPDATE `images` SET `img_name` = ? WHERE `img_name` = $_POST[$arrPic[$i]]';
+
+    $stmt = $connection->prepare($sqlImgEdit);
+
+    $newNameImg = strip_tags($_POST['rename']);
+
+    $stmt->bind_param('s', $newNameImg);
+    $stmt->execute();
+
+}
