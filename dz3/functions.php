@@ -67,7 +67,6 @@ $connection->query($sql);
 //$connection->query('truncate table `users`');
 //$connection->query('truncate table `login`');
 
-print_r($_POST);
 if (isset($_POST['action']) && $_POST['action'] == 'Переименовать') {
 
     $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `img_id` = ?';
@@ -89,7 +88,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Переименовать')
 //    }
 
 }
-
+print_r($_POST);
 if (isset($_POST) && $_POST['action'] == 'Удалить') {
 
     $sqlImgEdit = 'DELETE  FROM `images` WHERE `img_id` = ?';
@@ -98,7 +97,7 @@ if (isset($_POST) && $_POST['action'] == 'Удалить') {
     $imgId = $_POST['id'];
     print_r($imgName);
 
-    $stmt->bind_param('s', $imgId);
+    $stmt->bind_param('i', $imgId);
     $stmt->execute();
 
     $imgName =

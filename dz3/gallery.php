@@ -1,26 +1,27 @@
 <?php
-//$host = 'localhost';
-//$base = 'phpkurs';
-//$user = 'root';
-//$pass = '';
-//
-//$connection = @new mysqli($host, $user, $pass, $base);
-//if (mysqli_connect_errno()) {
-//    die(mysqli_connect_error());
-//}
-//$connection->query('SET NAMES "UTF-8"');
-//
-//$sql = 'SELECT `img_id` FROM `images` ';
-//$result = $connection->query($sql);
-//$imgIdAll = $result->fetch_all(MYSQLI_ASSOC);
-//foreach ($imgIdAll as $value) {
-//    foreach ($value as $item) {
-//        $arrId [] = $item;
-//    }
-//}
+$host = 'localhost';
+$base = 'phpkurs';
+$user = 'root';
+$pass = '';
+
+$connection = @new mysqli($host, $user, $pass, $base);
+if (mysqli_connect_errno()) {
+    die(mysqli_connect_error());
+}
+$connection->query('SET NAMES "UTF-8"');
+
+$sql = 'SELECT `img_id` FROM `images` ';
+$result = $connection->query($sql);
+$imgIdAll = $result->fetch_all(MYSQLI_ASSOC);
+foreach ($imgIdAll as $value) {
+    foreach ($value as $item) {
+        $arrId [] = $item;
+    }
+}
 $arrPic = scandir('photos');
 array_shift($arrPic);
 array_shift($arrPic);
+$len = count($arrPic);
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,18 +33,23 @@ array_shift($arrPic);
     <title>Document</title>
 </head>
 <body>
-<form action="functions.php" method="post">
-<?php foreach ($arrPic as $item) : ?>
-    <?php $pic = $item ?>
-    <p><?php echo $pic ?>
-        <label>
-            <input type="text" name="edit">
-        </label>
-        <input type="submit" name="action" value="Переименовать">
-        <input type="submit" name="action" value="Удалить">
-    </p>
-<?php endforeach ?>
-</form>
+<?php foreach ($arrId as $row) : ?>
+    <?php $id = $row; ?>
+    <?php while ($len > -1) : ?>
+        <?php if (!empty($len)) : ?>
+        <form action="functions.php" method="post">
+            <?php echo $arrPic[$len - 1]; ?>
+            <label>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <input type="text" name="edit" value="<?php echo $arrPic[$len - 1]; ?>">
+            </label>
+            <input type="submit" name="action" value="Переименовать">
+            <input type="submit" name="action" value="Удалить">
+        </form>
+            <?php endif; ?>
+        <?php $len--; ?>
+    <?php endwhile; ?>
+<?php endforeach; ?>
 <a href="index.php">Вернуться на главную</a>
 </body>
 </html>
