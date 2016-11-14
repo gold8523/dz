@@ -21,7 +21,7 @@ foreach ($imgIdAll as $value) {
 $arrPic = scandir('photos');
 array_shift($arrPic);
 array_shift($arrPic);
-$len = count($arrPic);
+$lenMax = max(count($arrPic), count($arrId));
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,18 +33,18 @@ $len = count($arrPic);
     <title>Document</title>
 </head>
 <body>
-<?php /** @var TYPE_NAME $arrId */
-foreach ($arrId as $row) : ?>
-    <?php $id = $row; ?>
+<?php for($i = 0; $i < $lenMax; $i++): ?>
     <form action="functions.php" method="post">
-        <label>
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="text" name="edit" value="<?php ?>">
-        </label>
-        <input type="submit" name="action" value="Переименовать">
-        <input type="submit" name="action" value="Удалить">
+    <?php if (isset($arrPic[$i]) && isset($arrId[$i])) : ?>
+            <label><?php echo $arrPic[$i]; ?>
+                <input type="hidden" name="id" value="<?php echo $arrId[$i]; ?>">
+                <input type="text" name="edit" value="<?php echo $arrPic[$i]; ?>">
+            </label>
+            <input type="submit" name="action" value="Переименовать">
+            <input type="submit" name="action" value="Удалить"><br>
+        <?php endif; ?>
     </form>
-<?php endforeach; ?>
+    <?php endfor; ?>
 <a href="index.php">Вернуться на главную</a>
 </body>
 </html>
