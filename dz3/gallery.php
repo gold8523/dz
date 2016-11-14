@@ -33,22 +33,17 @@ $len = count($arrPic);
     <title>Document</title>
 </head>
 <body>
-<?php foreach ($arrId as $row) : ?>
+<?php /** @var TYPE_NAME $arrId */
+foreach ($arrId as $row) : ?>
     <?php $id = $row; ?>
-    <?php while ($len > -1) : ?>
-        <?php if (!empty($len)) : ?>
-        <form action="functions.php" method="post">
-            <?php echo $arrPic[$len - 1]; ?>
-            <label>
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="text" name="edit" value="<?php echo $arrPic[$len - 1]; ?>">
-            </label>
-            <input type="submit" name="action" value="Переименовать">
-            <input type="submit" name="action" value="Удалить">
-        </form>
-            <?php endif; ?>
-        <?php $len--; ?>
-    <?php endwhile; ?>
+    <form action="functions.php" method="post">
+        <label>
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="text" name="edit" value="<?php ?>">
+        </label>
+        <input type="submit" name="action" value="Переименовать">
+        <input type="submit" name="action" value="Удалить">
+    </form>
 <?php endforeach; ?>
 <a href="index.php">Вернуться на главную</a>
 </body>
