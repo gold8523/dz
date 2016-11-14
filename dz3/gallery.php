@@ -34,7 +34,7 @@ $lenMax = max(count($arrPic), count($arrId));
 </head>
 <body>
 <?php for ($i = 0; $i < $lenMax; $i++): ?>
-    <form action="functions.php" method="post">
+    <form action="action.php" method="post">
         <?php if (isset($arrPic[$i]) && isset($arrId[$i])) : ?>
             <label><?php echo $arrPic[$i]; ?>
                 <input type="hidden" name="id" value="<?php echo $arrId[$i]; ?>">
