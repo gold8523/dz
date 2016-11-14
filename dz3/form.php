@@ -8,7 +8,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-<form enctype="multipart/form-data" action="functions.php" method="post">
+<form enctype="multipart/form-data" action="action.php" method="post">
     <table>
         <tr>
             <td>Введите логин:</td>

@@ -37,7 +37,7 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
     } else {
         $uploads_dir = 'C:/OpenServer/domains/dz/dz3/photos';
         $tmp_name = $_FILES['picture']['tmp_name'];
-        $name = strip_tags($_POST['login']) . $_FILES['picture']['name'];
+        $name = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
         move_uploaded_file($tmp_name, "$uploads_dir/$name");
     }
 
@@ -47,8 +47,6 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
 
     $stmt->bind_param('s', $imgName);
     $stmt->execute();
-
-    echo 'Вы успешно заегистрированны!';
 
     header('Location: .');
     exit();

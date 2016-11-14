@@ -66,52 +66,48 @@ $connection->query($sql);
 //}
 //$connection->query('truncate table `users`');
 //$connection->query('truncate table `login`');
-if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
-    $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
-    $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
-    $sqlImages = 'insert into `images` (`img_name`) value (?)';
 
-    $stmt = $connection->prepare($sqlUsers);
+print_r($_POST);
+if (isset($_POST['action']) && $_POST['action'] == 'Переименовать') {
 
-    $username = strip_tags($_POST['name']);
-    $age = strip_tags($_POST['age']);
-    $info = strip_tags($_POST['info']);
+    $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `img_id` = ?';
+    $stmt = $connection->prepare($sqlImgEdit);
 
-    $stmt->bind_param('sis', $username, $age, $info);
+    $imgId = strip_tags($_POST['id']);
+    $newName = strip_tags($_POST['edit']);
+
+    $stmt->bind_param('si', $newName, $imgId);
     $stmt->execute();
 
-    $stmt = $connection->prepare($sqlLogin);
+//    $oldname = $_POST['id'];
+//    $newname = $_POST['edit'];
+//    $ren = rename("$oldname" , "$newname" );
+//    if ($ren == true) {
+//        echo 'Изображение успешно !';
+//    } else {
+//        echo 'Что-то пошло не так!';
+//    }
 
-    $login = strip_tags($_POST['login']);
-    $pass = strip_tags($_POST['pass']);
-
-    $stmt->bind_param('ss', $login, $pass);
-    $stmt->execute();
-
-    if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
-        && $_FILES['picture']['type'] != "image/png") {
-        echo  'Выберете изображение формата jpeg, png или gif.';
-    } else {
-        $uploads_dir = 'C:/OpenServer/domains/dz/dz3/photos';
-        $tmp_name = $_FILES['picture']['tmp_name'];
-        $name = strip_tags($_POST['login']) . $_FILES['picture']['name'];
-        move_uploaded_file($tmp_name, "$uploads_dir/$name");
-    }
-
-    $stmt = $connection->prepare($sqlImages);
-
-    $imgName = $name;
-
-    $stmt->bind_param('s', $imgName);
-    $stmt->execute();
-
-    header('Location: .');
-    exit();
 }
 
-if (!empty($_POST) && $_POST['action'] == 'Удалить') {
-    $sqlImgEdit = 'DELETE  FROM`images` WHERE `img_name` = $_POST[$arrPic[$i]]';
+if (isset($_POST) && $_POST['action'] == 'Удалить') {
 
-    $connection->query($sqlImgEdit);
+    $sqlImgEdit = 'DELETE  FROM `images` WHERE `img_id` = ?';
+    $stmt = $connection->prepare($sqlImgEdit);
+
+    $imgId = $_POST['id'];
+    print_r($imgName);
+
+    $stmt->bind_param('s', $imgId);
+    $stmt->execute();
+
+    $imgName =
+    $dir = 'photos';
+    $del = unlink("$dir/$imgName");
+    if ($del == true) {
+        echo 'Изображение успешно удалено!';
+    } else {
+        echo 'Что-то пошло не так!';
+    }
 
 }
