@@ -33,18 +33,19 @@ $lenMax = max(count($arrPic), count($arrId));
     <title>Document</title>
 </head>
 <body>
-<?php for($i = 0; $i < $lenMax; $i++): ?>
+<?php for ($i = 0; $i < $lenMax; $i++): ?>
     <form action="functions.php" method="post">
-    <?php if (isset($arrPic[$i]) && isset($arrId[$i])) : ?>
+        <?php if (isset($arrPic[$i]) && isset($arrId[$i])) : ?>
             <label><?php echo $arrPic[$i]; ?>
                 <input type="hidden" name="id" value="<?php echo $arrId[$i]; ?>">
+                <input type="hidden" name="old" value="<?php echo $arrPic[$i]; ?>">
                 <input type="text" name="edit" value="<?php echo $arrPic[$i]; ?>">
             </label>
             <input type="submit" name="action" value="Переименовать">
             <input type="submit" name="action" value="Удалить"><br>
         <?php endif; ?>
     </form>
-    <?php endfor; ?>
+<?php endfor; ?>
 <a href="index.php">Вернуться на главную</a>
 </body>
 </html>
