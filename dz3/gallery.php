@@ -18,9 +18,9 @@ foreach ($imgIdAll as $value) {
         $arrId [] = $item;
     }
 }
-$arrPic = scandir('photos',1);
-array_pop($arrPic);
-array_pop($arrPic);
+$arrPic = scandir('photos');
+array_shift($arrPic);
+array_shift($arrPic);
 $lenMax = max(count($arrPic), count($arrPic));
 ?>
 <!doctype html>
