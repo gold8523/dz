@@ -31,25 +31,25 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
     $stmt->bind_param('ss', $login, $pass);
     $stmt->execute();
 
-    if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
-        && $_FILES['picture']['type'] != "image/png") {
-        echo  'Выберете изображение формата jpeg, png или gif.';
-    } else {
-        $uploads_dir = 'C:/OpenServer/domains/dz/dz3/photos';
-        $tmp_name = $_FILES['picture']['tmp_name'];
-        $name = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
-        move_uploaded_file($tmp_name, "$uploads_dir/$name");
-    }
-
     $stmt = $connection->prepare($sqlImages);
 
+    $name = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
     $imgName = $name;
 
     $stmt->bind_param('s', $imgName);
     $stmt->execute();
 
     header('Location: .');
-    exit();
+}
+
+if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
+    && $_FILES['picture']['type'] != "image/png") {
+    echo  'Выберете изображение формата jpeg, png или gif.';
+} else {
+    $dirUpload = dirname(__FILE__);
+    $uploads_dir = $dirUpload. '\photos';
+    $tmp_name = $_FILES['picture']['tmp_name'];
+    move_uploaded_file($tmp_name, "$uploads_dir/$name");
 }
 
 if (isset($_POST['action']) && $_POST['action'] == 'Переименовать') {
