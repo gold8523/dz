@@ -1,38 +1,32 @@
 <?php
-$bmw =[
-    'model' => 'X5',
-    'speed' => 120,
-    'doors' => 5,
-    'year' => 2015,
+$arr = [
+    'one' => [
+        'two' => [
+            'three' => 123
+        ]
+    ]
 ];
-$toyota = [
-    'model' => 'Camry',
-    'speed' => 150,
-    'doors' => 5,
-    'year' => 2016,
-];
-$opel = [
-    'model' => 'Astra',
-    'speed' => 100,
-    'doors' => 3,
-    'year' => 2013
-];
-$mercedes = [
-    'model' => 'G500',
-    'speed' => '200',
-    'doors' => '5',
-    'year' => '2002',
-];
-$car = [
-    'bmw' => $bmw,
-    'toyota' => $toyota,
-    'opel' => $opel
-];
+$newArr = json_encode($arr);
+file_put_contents('output.json', $newArr);
 
-file_put_contents('output.json', $car);
-
-if (rand(0,1) == 1) {
-    $car ['mercedes'] = $mercedes;
-    file_put_contents('output2.json', $car);
+if (rand(0, 1) == 1) {
+    $arr ['four'] = 1234;
+    $secondArr = json_encode($arr);
+    file_put_contents('output2.json', $secondArr);
+} else {
+    file_put_contents('output2.json', $newArr);
 }
-print_r(json_encode($car));
+fopen('output.json', 'r');
+fopen('output2.json', 'r');
+
+$output = file_get_contents('output.json');
+$output2 = file_get_contents('output2.json');
+$json = json_decode($output, true);
+$json2 = json_decode($output2, true);
+
+if (($json === $json2) == 0) {
+    echo 'Файлы отличаются';
+} else {
+    echo 'Файлы не отличаются';
+}
+
