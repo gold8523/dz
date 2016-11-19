@@ -25,7 +25,7 @@ $json = json_decode($output, true);
 $json2 = json_decode($output2, true);
 
 if (($json === $json2) == 0) {
-    echo 'Файлы отличаются';
+    echo 'Файлы отличаются элементом: ' . $json2['four'];
 } else {
     echo 'Файлы не отличаются';
 }

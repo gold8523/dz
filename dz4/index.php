@@ -1,7 +1,7 @@
 <?php
 $xml = simplexml_load_file('data.xml');
-echo 'Номер заказа: ' . $xml["PurchaseOrderNumber"] . "<br>";
-echo 'Дата заказа: ' . $xml["OrderDate"] . "<br>";
+echo "<h3>" . 'Номер заказа: ' . $xml["PurchaseOrderNumber"] . "</h3>";
+echo "<h4>" . 'Дата заказа: ' . $xml["OrderDate"] . "</h4>";
 echo "<br>";
 
 
@@ -18,8 +18,8 @@ foreach ($xml->Address as $address) {
     echo "<br>";
 }
 
-echo 'Комментарий к заказу: ' . $xml->DeliveryNotes[0] . "<br>";
-echo "<br>";
+echo "<p><strong>Комментарий к заказу: </strong>" . $xml->DeliveryNotes[0] ."</p>";
+
 
 $product = ['Название товара: ', 'Количество: ', 'Цена: ', 'Комментарий: '];
 $n = 0;
