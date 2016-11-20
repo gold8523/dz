@@ -1,8 +1,10 @@
 <?php
-include include dirname(__DIR__) . '\mainModel.php';
+include dirname(__DIR__) . '\mainModel.php';
 
-class modLogin extends model {
+class modLogin extends Mymodel {
     public function selectLog() {
+//        $con = new model();
+//        $con->dbConnection();
         $sql = 'SELECT `user_id` FROM `login` ';
         $result = $connection->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);

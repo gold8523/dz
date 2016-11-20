@@ -1,9 +1,12 @@
 <?php
 include 'mainControl.php';
 include  dirname(__FILE__) . '\models\modLogin.php';
-$selLog = new modLogin();
-$selLog ->selectLog();
-var_dump($selLog);
+include  'mainModel.php';
+//$selLog = new modLogin();
+//$selLog ->selectLog();
+$con = new Mymodel();
+$con->dbConnection();
+var_dump($con);
 //$url = explode('/', $_SERVER['REQUEST_URI']);
 //if (empty($url[2]) || $url[2] == 'index.php') {
 //    include 'views/index.html';
