@@ -183,6 +183,7 @@ function reG($st) {
     $newRes = $resReg[0];
     $regTwo = preg_match('/:\)/', $st);
     if ($regTwo == true) {
+        /** @noinspection PhpVoidFunctionResultUsedInspection */
         echo sm();
     } elseif ($newRes > 1000) {
         echo 'Сеть есть';
