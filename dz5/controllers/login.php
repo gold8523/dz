@@ -3,21 +3,25 @@ include dirname(__DIR__) . 'mainControl.php';
 include  dirname(__DIR__) . '\views\login.html';
 include  dirname(__DIR__) . '\models\modLogin.php';
 
+$selLog = new modLogin();
+$log = $selLog ->selectLog1();
+$log2 = $selLog ->selectLog2();
+$log3 = $selLog ->selectLog3();
 
-print_r($_POST);
+$len = count($log);
 
 if (!empty($_POST['log'])) {
-    $selLog = new modLogin();
-    $selLog ->selectLog();
-    $len = count($arrId);
     while ($len > -1) {
-        if ($arrLogin[$len] == strip_tags($_POST['log']) && $arrPass[$len] == strip_tags($_POST['password'])) {
-            header('Location: gallery.php');
+        if ($log2[$len] == strip_tags($_POST['log']) && $log3[$len] == strip_tags($_POST['password'])) {
+            header('Location: message.html');
+            $mes = 'good';
             exit();
         }
         $len--;
     }
-    echo 'Неверный логин или пароль!';
+    $mes = 'Неверный логин или пароль!';
+    include dirname(__DIR__) . '\views\message.html';
 } else {
-    echo 'Введите логин и пароль!';
+    $mes = 'Введите логин и пароль!';
+    include dirname(__DIR__) . '\views\message.html';
 }

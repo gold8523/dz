@@ -1,7 +1,8 @@
 <?php
-class Mymodel
+
+class oneCla
 {
-    public function dbConnection()
+    public function con1()
     {
         $config = parse_ini_file('config.ini');
         $host = $config['host'];
@@ -13,5 +14,6 @@ class Mymodel
             die(mysqli_connect_error());
         }
         $connection->query('SET NAMES "UTF-8"');
+        return $connection;
     }
 }

@@ -1,34 +1,44 @@
 <?php
 include dirname(__DIR__) . '\mainModel.php';
 
-class modLogin extends Mymodel {
-    public function selectLog() {
-//        $con = new model();
-//        $con->dbConnection();
+class modLogin extends oneCla {
+    public function selectLog1() {
+        $con = $this->con1();
         $sql = 'SELECT `user_id` FROM `login` ';
-        $result = $connection->query($sql);
+        $result = $con->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
                 $arrId [] = $item;
             }
         }
+        return $arrId;
+    }
+
+    public function selectLog2() {
+        $con = $this->con1();
         $sql = 'SELECT `login` FROM `login` ';
-        $result = $connection->query($sql);
+        $result = $con->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
                 $arrLogin [] = $item;
             }
         }
+        return $arrLogin;
+    }
+
+    public function selectLog3() {
+        $con = $this->con1();
         $sql = 'SELECT `pass` FROM `login` ';
-        $result = $connection->query($sql);
+        $result = $con->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
                 $arrPass [] = $item;
             }
         }
+        return $arrPass;
     }
 }
 
