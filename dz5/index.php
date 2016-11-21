@@ -1,6 +1,6 @@
 <?php
 include 'mainControl.php';
-include  dirname(__FILE__) . '\models\modLogin.php';
+include  'models\modLogin.php';
 
 $url = explode('/', $_SERVER['REQUEST_URI']);
 if (empty($url[2]) || $url[2] == 'index.php') {

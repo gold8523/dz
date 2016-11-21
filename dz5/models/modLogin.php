@@ -1,5 +1,5 @@
 <?php
-include dirname(__DIR__) . '\mainModel.php';
+include 'mainModel.php';
 
 class modLogin extends oneCla {
     public function selectLog1() {
