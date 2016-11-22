@@ -1,6 +1,6 @@
 <?php
 
-class oneCla
+class model
 {
     public function con1()
     {

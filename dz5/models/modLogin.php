@@ -1,7 +1,7 @@
 <?php
 include dirname(__DIR__) . '\mainModel.php';
 
-class modLogin extends oneCla {
+class modLogin extends model {
 //    public $arrId;
 //    public $arrLogin;
 //    public $arrPass;
