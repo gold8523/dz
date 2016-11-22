@@ -2,9 +2,9 @@
 include dirname(__DIR__) . '\mainModel.php';
 
 class modLogin extends oneCla {
-    public $arrId;
-    public $arrLogin;
-    public $arrPass;
+//    public $arrId;
+//    public $arrLogin;
+//    public $arrPass;
     public function selectLog1() {
 
         $con = $this->con1();
@@ -13,9 +13,10 @@ class modLogin extends oneCla {
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
-                $this->arrId [] = $item;
+                $arrId [] = $item;
             }
         }
+        return $arrId;
     }
 
     public function selectLog2() {
@@ -25,9 +26,10 @@ class modLogin extends oneCla {
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
-                $this->arrLogin [] = $item;
+                $arrLogin [] = $item;
             }
         }
+        return $arrLogin;
     }
 
     public function selectLog3() {
@@ -37,9 +39,10 @@ class modLogin extends oneCla {
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
-                $this->arrPass [] = $item;
+                $arrPass [] = $item;
             }
         }
+        return $arrPass;
     }
 }
 

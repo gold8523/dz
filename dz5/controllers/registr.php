@@ -1,33 +1,6 @@
 <?php
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
-    $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
-    $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
-    $sqlImages = 'insert into `images` (`img_name`) value (?)';
 
-    $stmt = $connection->prepare($sqlUsers);
-
-    $username = strip_tags($_POST['name']);
-    $age = strip_tags($_POST['age']);
-    $info = strip_tags($_POST['info']);
-
-    $stmt->bind_param('sis', $username, $age, $info);
-    $stmt->execute();
-
-    $stmt = $connection->prepare($sqlLogin);
-
-    $login = strip_tags($_POST['login']);
-    $pass = strip_tags($_POST['pass']);
-
-    $stmt->bind_param('ss', $login, $pass);
-    $stmt->execute();
-
-    $stmt = $connection->prepare($sqlImages);
-
-    $name = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
-    $imgName = $name;
-
-    $stmt->bind_param('s', $imgName);
-    $stmt->execute();
 
     if (!empty($_FILES['picture']['name'])) {
         if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
@@ -35,7 +8,7 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
             echo  'Выберете изображение формата jpeg, png или gif.';
         } else {
             $dirUpload = dirname(__FILE__);
-            $uploads_dir = $dirUpload. '\photos';
+            $uploads_dir = $dirUpload. '\uploads';
             $tmp_name = $_FILES['picture']['tmp_name'];
             move_uploaded_file($tmp_name, "$uploads_dir/$name");
         }
