@@ -1,29 +1,20 @@
 <?php
-$connect = new model();
 $reg = new modForm();
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
 
-    $con = $connect->con1();
-
     $usernameCon = strip_tags($_POST['name']);
     $ageCon = strip_tags($_POST['age']);
-    $infoCon = strip_tags($_POST['info']);
-    $loginCon = strip_tags($_POST['login']);
+    $infoCon = strip_tags($_POST['information']);
+    $loginCon = strip_tags($_POST['loginUser']);
     $passCon = strip_tags($_POST['pass']);
-    $imgNameCon = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
-    $user_idCon = $con->insert_id;
+    $imgNameCon = strip_tags($_POST['loginUser']) . '_' . $_FILES['picture']['name'];
 
 
-    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon, $infoCon, $passCon, $imgNameCon, $user_idCon);
+    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon);
 
-
-
-//    $insReg = $reg->registrationLog($infoCon, $passCon);
 
     if (!empty($_FILES['picture']['name'])) {
-
-//        $insReg = $reg->registrationImg($imgNameCon);
 
             if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
                 && $_FILES['picture']['type'] != "image/png") {
