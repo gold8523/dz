@@ -1,27 +1,37 @@
 <?php
+$reg = new modRegistr();
+
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
 
+    $usernameCon = strip_tags($_POST['name']);
+    $ageCon = strip_tags($_POST['age']);
+    $infoCon = strip_tags($_POST['info']);
+
+    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon);
+
+    $loginCon = strip_tags($_POST['login']);
+    $passCon = strip_tags($_POST['pass']);
+
+    $insReg = $reg->registrationLog($infoCon, $passCon);
 
     if (!empty($_FILES['picture']['name'])) {
-        if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
-            && $_FILES['picture']['type'] != "image/png") {
-            echo  'Выберете изображение формата jpeg, png или gif.';
-        } else {
-            $dirUpload = dirname(__FILE__);
-            $uploads_dir = $dirUpload. '\uploads';
-            $tmp_name = $_FILES['picture']['tmp_name'];
-            move_uploaded_file($tmp_name, "$uploads_dir/$name");
-        }
+        $imgNameCon = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
+
+        $insReg = $reg->registrationImg($imgNameCon);
+
+            if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
+                && $_FILES['picture']['type'] != "image/png") {
+                echo  'Выберете изображение формата jpeg, png или gif.';
+            } else {
+                $dirUpload = dirname(__FILE__);
+                $uploads_dir = $dirUpload . '\uploads';
+                $tmp_name = $_FILES['picture']['tmp_name'];
+                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+            }
     }
-
-
-//    header('Location: .');
     echo 'Вы успешно зарегистрированы!';
 }
-print_r($_FILES['picture']['name']);
-if (!empty($_FILES)) {
 
-}
 
 
 if (isset($_POST['action']) && $_POST['action'] == 'Переименовать') {

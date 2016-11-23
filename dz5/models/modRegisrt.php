@@ -2,34 +2,44 @@
 include dirname(__DIR__) . '\mainModel.php';
 
 class modRegistr extends model {
-    public function registration {
+    public function registrationUs($usernameCon, $ageCon, $infoCon) {
         $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
-        $sqlLogin = 'insert into `login` (`login`, `pass`) value (?, ?)';
-        $sqlImages = 'insert into `images` (`img_name`) value (?)';
 
-        $stmt = $connection->prepare($sqlUsers);
+        $con = $this->con1();
+        $stmt = $con->prepare($sqlUsers);
 
-        $username = strip_tags($_POST['name']);
-        $age = strip_tags($_POST['age']);
-        $info = strip_tags($_POST['info']);
+        $username = $usernameCon;
+        $age = $ageCon;
+        $info = $infoCon;
 
         $stmt->bind_param('sis', $username, $age, $info);
         $stmt->execute();
+    }
 
-        $stmt = $connection->prepare($sqlLogin);
+    public function registrationLog($loginCon, $passCon) {
+        $sqlLogin = 'insert into `login` (`login`, `pass`, `user_id`) value (?, ?, ?)';
 
-        $login = strip_tags($_POST['login']);
-        $pass = strip_tags($_POST['pass']);
+        $con = $this->con1();
+        $stmt = $con->prepare($sqlLogin);
 
-        $stmt->bind_param('ss', $login, $pass);
+        $user_id = $con->insert_id;
+        $login = $loginCon;
+        $pass = $passCon;
+
+        $stmt->bind_param('ssi', $login, $pass, $user_id);
         $stmt->execute();
+    }
 
-        $stmt = $connection->prepare($sqlImages);
+    public function registrationImg($imgNameCon) {
+        $sqlImages = 'insert into `images` (`img_name`, `user_id`) value (?, ?)';
 
-        $name = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
-        $imgName = $name;
+        $con = $this->con1();
+        $stmt = $con->prepare($sqlImages);
 
-        $stmt->bind_param('s', $imgName);
+        $user_id = $con->insert_id;
+        $imgName = $imgNameCon;
+
+        $stmt->bind_param('si', $imgName, $user_id);
         $stmt->execute();
     }
 }
