@@ -1,7 +1,10 @@
 <?php
+$connect = new model();
 $reg = new modForm();
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
+
+    $con = $connect->con1();
 
     $usernameCon = strip_tags($_POST['name']);
     $ageCon = strip_tags($_POST['age']);
@@ -9,8 +12,10 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
     $loginCon = strip_tags($_POST['login']);
     $passCon = strip_tags($_POST['pass']);
     $imgNameCon = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
+    $user_idCon = $con->insert_id;
 
-    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon, $infoCon, $passCon, $imgNameCon);
+
+    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon, $infoCon, $passCon, $imgNameCon, $user_idCon);
 
 
 

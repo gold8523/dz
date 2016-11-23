@@ -2,7 +2,7 @@
 //include dirname(__DIR__) . '\mainModel.php';
 
 class modForm extends model {
-    public function registrationUs($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon) {
+    public function registrationUs($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon, $user_idCon) {
         $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
         $sqlLogin = 'insert into `login` (`login`, `pass`, `user_id`) value (?, ?, ?)';
         $sqlImages = 'insert into `images` (`img_name`, `user_id`) value (?, ?)';
@@ -13,7 +13,6 @@ class modForm extends model {
         $username = $usernameCon;
         $age = $ageCon;
         $info = $infoCon;
-        $user_id = $con->insert_id;
 
         $stmt->bind_param('sis', $username, $age, $info);
         $stmt->execute();
@@ -23,6 +22,7 @@ class modForm extends model {
 
         $login = $loginCon;
         $pass = $passCon;
+        $user_id = $user_idCon;
 
         $stmt->bind_param('ssi', $login, $pass, $user_id);
         $stmt->execute();
