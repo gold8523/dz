@@ -1,32 +1,33 @@
 <?php
-$reg = new modRegistr();
+$reg = new modForm();
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
 
     $usernameCon = strip_tags($_POST['name']);
     $ageCon = strip_tags($_POST['age']);
     $infoCon = strip_tags($_POST['info']);
-
-    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon);
-
     $loginCon = strip_tags($_POST['login']);
     $passCon = strip_tags($_POST['pass']);
+    $imgNameCon = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
 
-    $insReg = $reg->registrationLog($infoCon, $passCon);
+    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon, $infoCon, $passCon, $imgNameCon);
+
+
+
+//    $insReg = $reg->registrationLog($infoCon, $passCon);
 
     if (!empty($_FILES['picture']['name'])) {
-        $imgNameCon = strip_tags($_POST['login']) . '_' . $_FILES['picture']['name'];
 
-        $insReg = $reg->registrationImg($imgNameCon);
+//        $insReg = $reg->registrationImg($imgNameCon);
 
             if ($_FILES['picture']['type'] != "image/gif" && $_FILES['picture']['type'] != "image/jpeg"
                 && $_FILES['picture']['type'] != "image/png") {
                 echo  'Выберете изображение формата jpeg, png или gif.';
             } else {
-                $dirUpload = dirname(__FILE__);
+                $dirUpload = dirname(__DIR__);
                 $uploads_dir = $dirUpload . '\uploads';
                 $tmp_name = $_FILES['picture']['tmp_name'];
-                move_uploaded_file($tmp_name, "$uploads_dir/$name");
+                move_uploaded_file($tmp_name, "$uploads_dir/$imgNameCon");
             }
     }
     echo 'Вы успешно зарегистрированы!';
