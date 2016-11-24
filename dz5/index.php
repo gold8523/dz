@@ -2,6 +2,8 @@
 include 'mainControl.php';
 include 'models\modLogin.php';
 include 'models\modForm.php';
+include 'models\modLK.php';
+require 'vendor/autoload.php';
 
 $url = explode('/', $_SERVER['REQUEST_URI']);
 $cont = new controllers();
@@ -19,6 +21,8 @@ if (empty($url[2]) || $url[2] == 'index.php' || $url[2] == 'index.html') {
     } else {
         switch ($dir[0]) {
             case 'lk' :
+                include 'views/login.html';
+                break;
             case  'login' :
             case 'form' :
                 include 'views/' . $dir[0] . '.html';
