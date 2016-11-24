@@ -1,6 +1,5 @@
 <?php
-use Intervention\Image\ImageManagerStatic as Image;
-Image::configure(array('driver' => 'imagick'));
+
 class modLk extends model {
 
     public function selectUser($userId)
@@ -40,9 +39,23 @@ class modLk extends model {
         $stmt->bind_result($userImage);
         $stmt->fetch();
         $stmt->close();
-
-        $img = Image::make("uploads/$userName");
+        var_dump($userImage);
+//        $img = Image::make("uploads/$userName");
 
         include dirname(__DIR__) . '\views\lk.php';
+    }
+
+    public function addImg($imgNameCon, $userId) {
+        $sqlImages = 'insert into `images` (`img_name`, `user_id`) value (?, ?)';
+
+        $con = $this->con1();
+
+        $stmt = $con->prepare($sqlImages);
+
+        $imgName = $imgNameCon;
+        $user_id = $userId;
+
+        $stmt->bind_param('si', $imgName, $user_id);
+        $stmt->execute();
     }
 }

@@ -28,6 +28,7 @@ if ($isAuth) {
                 }
                 $_SESSION['auth'] = true;
                 $_SESSION['user_id'] = $logId[$len];
+                $_SESSION['login'] = $log[$len];
                 $isAuth = $_SESSION['auth'];
                 header('HTTP/1.1 404 Not Found');
                 header('Location: lk.php');

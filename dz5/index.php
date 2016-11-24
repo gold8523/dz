@@ -3,7 +3,6 @@ include 'mainControl.php';
 include 'models\modLogin.php';
 include 'models\modForm.php';
 include 'models\modLK.php';
-require 'vendor/autoload.php';
 
 $url = explode('/', $_SERVER['REQUEST_URI']);
 $cont = new controllers();
