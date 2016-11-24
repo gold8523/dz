@@ -1,9 +1,13 @@
 <?php
+use Intervention\Image\ImageManager;
+
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 class modLk extends model {
 
     public function selectUser($userId)
     {
+        $manager = new ImageManager(array('driver' => 'imagick'));
 
         $con = $this->con1();
         $user_id = $userId;
@@ -39,8 +43,10 @@ class modLk extends model {
         $stmt->bind_result($userImage);
         $stmt->fetch();
         $stmt->close();
-        var_dump($userImage);
-//        $img = Image::make("uploads/$userName");
+
+//        $manager =;
+        $img = $manager->make("uploads/$userName");
+        echo $img;
 
         include dirname(__DIR__) . '\views\lk.php';
     }
