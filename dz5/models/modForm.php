@@ -18,12 +18,12 @@ class modForm extends model {
         $login = $loginCon;
         $pass = $passCon;
         $imgName = $imgNameCon;
-//        $user_id;
+
 
         $stmt->bind_param('sis', $username, $age, $info);
         $stmt->execute();
 
-
+        $user_id = $con->insert_id;
         $stmt = $con->prepare($sqlLogin);
 
         $stmt->bind_param('ssi', $login, $pass, $user_id);
@@ -34,8 +34,6 @@ class modForm extends model {
 
         $stmt->bind_param('si', $imgName, $user_id);
         $stmt->execute();
-
-        print_r($con->insert_id);
     }
 
 }
