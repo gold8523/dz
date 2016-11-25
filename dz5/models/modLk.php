@@ -112,12 +112,13 @@ class modLk extends model {
         $stmt->execute();
     }
 
-    public function deleteImg ($img_id) {
+    public function deleteImg ($imageId) {
         $con = $this->con1();
-        $sqlImgEdit = 'DELETE  FROM `images` WHERE `img_id` = ?';
-        $stmt = $con->prepare($sqlImgEdit);
 
-        $imgId = $img_id;
+        $sqlImgDel = 'DELETE  FROM `images` WHERE `id` = ?';
+        $stmt = $con->prepare($sqlImgDel);
+
+        $imgId = $imageId;
 
         $stmt->bind_param('i', $imgId);
         $stmt->execute();

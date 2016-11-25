@@ -16,7 +16,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Переименовать')
     $dir = dirname(__DIR__) . '/uploads';
     $ren = rename("$dir/$oldName" , "$dir/$newName" );
     if ($ren == true) {
-        echo 'Изображение успешно переименовано!';
+        header('Location: lk.php');
     } else {
         echo 'Что-то пошло не так!';
     }
@@ -24,15 +24,15 @@ if (isset($_POST['action']) && $_POST['action'] == 'Переименовать')
 }
 if (isset($_POST) && $_POST['action'] == 'Удалить') {
 
-    $img_id = $_POST['id'];
+    $imageId = $_POST['id'];
 
-    $ren = $selUser->deleteImg($img_id);
+    $ren = $selUser->deleteImg($imageId);
 
-    $imgName = $_POST['old'];
+    $imgName = $_POST['edit'];
     $dir = dirname(__DIR__) . '/uploads';
     $del = unlink("$dir/$imgName");
     if ($del == true) {
-        echo 'Изображение успешно удалено!';
+        header('Location: lk.php');
     } else {
         echo 'Что-то пошло не так!';
     }
