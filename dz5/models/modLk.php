@@ -32,15 +32,35 @@ class modLk extends model {
         $stmt->fetch();
         $stmt->close();
 
-        $sql = 'SELECT `img_name` FROM `images` WHERE user_id = ?';
+        $sql = 'SELECT `img_name`, `id` FROM `images` WHERE user_id = ?';
         $stmt = $con->prepare($sql);
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         $userImage = $result->fetch_all(MYSQLI_ASSOC);
-        print_r($user_id);
-        print_r($userImage);
 
+        $images = [];
+        foreach ($userImage as $value) {
+            foreach ($value as $item) {
+                $images [] = $item;
+            }
+        }
+
+        $img = [];
+        $id = [];
+        $len = count($images);
+        while ($len > -1) {
+            if (!empty($images[$len])) {
+                $gt = gettype($images[$len]);
+                if ($gt == 'integer') {
+                    $id [] = $images[$len];
+                } else {
+                    $img [] = $images[$len];
+                }
+            }
+            $len--;
+        }
+        $i = 0;
 
         $sql = 'SELECT `username`, `age` FROM `users`';
         $result = $con->query($sql);
@@ -78,14 +98,28 @@ class modLk extends model {
         $stmt->execute();
     }
 
-//    public function renameImg ($, $) {
-//        $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `img_id` = ?';
-//        $stmt = $connection->prepare($sqlImgEdit);
-//
-//        $imgId = strip_tags($_POST['id']);
-//        $newName = strip_tags($_POST['edit']);
-//
-//        $stmt->bind_param('si', $newName, $imgId);
-//        $stmt->execute();
-//    }
+    public function renameImg ($imgName, $img_id) {
+        $con = $this->con1();
+
+        $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `id` = ?';
+        $stmt = $con->prepare($sqlImgEdit);
+
+
+        $newName = $imgName;
+        $imgId = $img_id;
+
+        $stmt->bind_param('si', $newName, $imgId);
+        $stmt->execute();
+    }
+
+    public function deleteImg ($img_id) {
+        $con = $this->con1();
+        $sqlImgEdit = 'DELETE  FROM `images` WHERE `img_id` = ?';
+        $stmt = $con->prepare($sqlImgEdit);
+
+        $imgId = $img_id;
+
+        $stmt->bind_param('i', $imgId);
+        $stmt->execute();
+    }
 }

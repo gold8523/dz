@@ -7,6 +7,7 @@
 <body>
 <h1>Личный кабинет</h1>
 <div>
+    <img src="<?php echo $images[0] ?>" alt="Изображение">
     <ul>
         <li>Имя:<?php echo ' ' . $userName; ?></li>
         <li>Возраст:<?php echo ' ' . $userAge; ?></li>
@@ -40,17 +41,26 @@
 </div>
 <div>
     <h4>Все изображения:</h4>
-    <form action="" method="post">
-
-    </form>
+    <?php foreach ($img as $item) : ?>
     <ul>
-        <li><?php echo $a; ?></li>
+        <li>
+            <form action="renameImg.php" method="post">
+                <label><?php echo $item; ?>
+                    <input type="hidden" name="id" value="<?php echo $id[$i]; ?>">
+                    <input type="hidden" name="old" value="<?php echo $item; ?>">
+                    <input type="text" name="edit" value="<?php echo $item; ?>">
+                </label>
+                <input type="submit" name="action" value="Переименовать">
+                <input type="submit" name="action" value="Удалить"><br>
+            </form>
+        </li>
     </ul>
+        <?php $i++; ?>
+    <?php endforeach; ?>
 </div>
 <div>
     <h3>Отправить письмо:</h3>
     <form action="" method="post">
-
     </form>
 </div>
 <div>
