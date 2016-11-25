@@ -1,13 +1,9 @@
 <?php
-use Intervention\Image\ImageManager;
-
-require dirname(__DIR__) . '/vendor/autoload.php';
 
 class modLk extends model {
 
     public function selectUser($userId)
     {
-        $manager = new ImageManager(array('driver' => 'imagick'));
 
         $con = $this->con1();
         $user_id = $userId;
@@ -36,17 +32,34 @@ class modLk extends model {
         $stmt->fetch();
         $stmt->close();
 
-        $sql = 'SELECT `img_name` FROM `images` WHERE id = ?';
+        $sql = 'SELECT `img_name` FROM `images` WHERE user_id = ?';
         $stmt = $con->prepare($sql);
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
-        $stmt->bind_result($userImage);
-        $stmt->fetch();
-        $stmt->close();
+        $result = $stmt->get_result();
+        $userImage = $result->fetch_all(MYSQLI_ASSOC);
+        print_r($user_id);
+        print_r($userImage);
 
-//        $manager =;
-        $img = $manager->make("uploads/$userName");
-        echo $img;
+
+        $sql = 'SELECT `username`, `age` FROM `users`';
+        $result = $con->query($sql);
+        $usersAge = $result->fetch_all(MYSQLI_ASSOC);
+        foreach ($usersAge as $value) {
+            foreach ($value as $item) {
+                $arrAge [] = $item;
+            }
+        }
+        $ageUsers = [];
+        $len = count($arrAge);
+        while ($len > 0) {
+            if (($arrAge[$len - 1]) > 18) {
+                $ageUsers [] = $arrAge[$len - 2] . ' ' . $arrAge[$len - 1] . '- совершеннолетний';
+            } else {
+                $ageUsers [] = $arrAge[$len - 2] . ' ' . $arrAge[$len - 1] . '- не совершеннолетний';
+            }
+            $len = $len-2;
+        }
 
         include dirname(__DIR__) . '\views\lk.php';
     }
@@ -64,4 +77,15 @@ class modLk extends model {
         $stmt->bind_param('si', $imgName, $user_id);
         $stmt->execute();
     }
+
+//    public function renameImg ($, $) {
+//        $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `img_id` = ?';
+//        $stmt = $connection->prepare($sqlImgEdit);
+//
+//        $imgId = strip_tags($_POST['id']);
+//        $newName = strip_tags($_POST['edit']);
+//
+//        $stmt->bind_param('si', $newName, $imgId);
+//        $stmt->execute();
+//    }
 }

@@ -17,5 +17,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'Добавить') {
         move_uploaded_file($tmp_name, "$uploads_dir/$imgNameCon");
 
         $add = $selUser->addImg($imgNameCon, $userId);
+        header('Location: .');
     }
 }

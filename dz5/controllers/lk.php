@@ -17,30 +17,6 @@ if ($isAuth) {
     exit();
 }
 
-
-//if (isset($_POST['action']) && $_POST['action'] == 'Переименовать') {
-//
-//    $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `img_id` = ?';
-//    $stmt = $connection->prepare($sqlImgEdit);
-//
-//    $imgId = strip_tags($_POST['id']);
-//    $newName = strip_tags($_POST['edit']);
-//
-//    $stmt->bind_param('si', $newName, $imgId);
-//    $stmt->execute();
-//
-//    $oldName = $_POST['old'];
-//    $newName = $_POST['edit'];
-//    $dir = 'photos';
-//    $ren = rename("$dir/$oldName" , "$dir/$newName" );
-//    if ($ren == true) {
-//        echo 'Изображение успешно переименовано!';
-//    } else {
-//        echo 'Что-то пошло не так!';
-//    }
-//
-//}
-//
 //if (isset($_POST) && $_POST['action'] == 'Удалить') {
 //
 //    $sqlImgEdit = 'DELETE  FROM `images` WHERE `img_id` = ?';

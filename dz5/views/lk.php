@@ -7,7 +7,6 @@
 <body>
 <h1>Личный кабинет</h1>
 <div>
-    <?php echo $img; ?>
     <ul>
         <li>Имя:<?php echo ' ' . $userName; ?></li>
         <li>Возраст:<?php echo ' ' . $userAge; ?></li>
@@ -41,6 +40,9 @@
 </div>
 <div>
     <h4>Все изображения:</h4>
+    <form action="" method="post">
+
+    </form>
     <ul>
         <li><?php echo $a; ?></li>
     </ul>
@@ -53,9 +55,10 @@
 </div>
 <div>
     <h4>Другие пользователи:</h4>
+    <?php foreach ($ageUsers as $item) : ?>
     <ul>
-        <li><?php echo $a; ?></li>
-    </ul>
+        <li><?php echo $item; ?></li>
+    </ul><?php endforeach; ?>
 </div>
 
 
