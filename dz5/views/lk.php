@@ -17,7 +17,7 @@
     <p><?php echo ' ' . $userInfo; ?></p>
 </div>
 <div>
-    <h3>Информация о вас:</h3>
+    <h3>Добавить изображение:</h3>
     <form enctype="multipart/form-data" action="addImg.php" method="post">
         <table>
             <tr>
