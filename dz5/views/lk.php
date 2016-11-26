@@ -60,7 +60,41 @@
 </div>
 <div>
     <h3>Отправить письмо:</h3>
-    <form action="" method="post">
+    <form action="mailer.php" method="post">
+        <table>
+            <tr>
+                <td>Введите адрес получателя:</td>
+                <td>
+                    <label>
+                        <input type="email" name="address" autofocus/>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Тема письма:</td>
+                <td>
+                    <label>
+                        <input type="text" name="title"/>
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Текст письма:</td>
+                <td>
+                    <label>
+                        <textarea name="email" cols="40" rows="10"></textarea>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="action" value="Отправить"/>
+                    <input type="reset" value="Очистить форму"/>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
 <div>
@@ -70,8 +104,6 @@
         <li><?php echo $item; ?></li>
     </ul><?php endforeach; ?>
 </div>
-
-
-
+<a href="index.php">Вернуться на главную</a>
 </body>
 </html>

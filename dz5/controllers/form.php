@@ -1,4 +1,6 @@
 <?php
+require dirname(__DIR__) . '/vendor/autoload.php';
+$mail = new PHPMailer;
 $reg = new modForm();
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
@@ -26,5 +28,23 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
                 move_uploaded_file($tmp_name, "$uploads_dir/$imgNameCon");
             }
     }
+
+//    var_dump($_POST);
+//    $mail->SMTPDebug = 3;
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.yandex.ru';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'senior.phpovich2016@yandex.ru';                 // SMTP username
+        $mail->Password = '20pHp16';                           // SMTP password
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 465;
+
+        $mail->setFrom('site.ru');
+        $mail->addAddress('senior.phpovich2016@yandex.ru', 'Петр');
+
+        $mail->Subject = 'Новый пользователь';
+        $mail->Body    = 'Зарегистрирован новый пользователь на сайте!';
+        $mail->AltBody = 'Зарегистрирован новый пользователь на сайте!';
+
     header('Location: login.php');
 }
