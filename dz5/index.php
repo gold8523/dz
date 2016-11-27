@@ -4,27 +4,27 @@ include 'models\modLogin.php';
 include 'models\modForm.php';
 include 'models\modLK.php';
 
-$url = explode('/', $_SERVER['REQUEST_URI']);
+$url = $_GET['url'];
+$url = rtrim($url, '/');
+$url = explode('/', $url);
 $cont = new controllers();
-if (empty($url[2]) || $url[2] == 'index.php' || $url[2] == 'index.html') {
+
+if (empty($url[0]) || $url[0] == 'index.php' || $url[0] == 'index.html') {
     include 'views/index.html';
 } else {
-    $dir = explode('.', $url[2]);
-    $contName = $url[2];
-    if ($dir[1] == 'html') {
-        $contName = 'views/' . $url[2];
-        $cont->control($contName);
-    } elseif ($dir[1] == 'php') {
-        $contName = 'controllers/' . $url[2];
-        $cont->control($contName);
-    } else {
-        switch ($dir[0]) {
+    switch ($url[0]) {
             case 'lk' :
+            case 'lk.html' :
+            case 'lk.php' :
+            case  'login' :
+            case  'login.html' :
+            case  'login.php' :
                 include 'views/login.html';
                 break;
-            case  'login' :
             case 'form' :
-                include 'views/' . $dir[0] . '.html';
+            case 'form.html' :
+            case 'form.php' :
+                include 'views/form.html';
                 break;
             default :
                 $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
@@ -32,6 +32,18 @@ if (empty($url[2]) || $url[2] == 'index.php' || $url[2] == 'index.html') {
                 header('Status: 404 Not Found');
 //            header('Location:'.$host.'404');
                 header('Location: 404.html');
+                break;
         }
-    }
+//    $dir = explode('.', $url[2]);
+
 }
+//    if ($dir[1] == 'html') {
+//        $contName = 'views/' . $url[2];
+//        $cont->control($contName);
+//    } elseif ($dir[1] == 'php') {
+//        $contName = 'controllers/' . $url[2];
+//        $cont->control($contName);
+//    } else {
+//
+//    }
+//}
