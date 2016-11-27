@@ -14,7 +14,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'Переименовать')
     $oldName = $_POST['old'];
     $newName = $_POST['edit'];
     $dir = dirname(__DIR__) . '/uploads';
+    $dirSmall = dirname(__DIR__) . '/images';
     $ren = rename("$dir/$oldName" , "$dir/$newName" );
+    $renSmall = rename("$dirSmall/$oldName" , "$dir/$newName" );
     if ($ren == true) {
         header('Location: lk.php');
     } else {
@@ -30,7 +32,9 @@ if (isset($_POST) && $_POST['action'] == 'Удалить') {
 
     $imgName = $_POST['edit'];
     $dir = dirname(__DIR__) . '/uploads';
+    $dirSmall = dirname(__DIR__) . '/images';
     $del = unlink("$dir/$imgName");
+    $delSmall = unlink("$dirSmall/$imgName");
     if ($del == true) {
         header('Location: lk.php');
     } else {

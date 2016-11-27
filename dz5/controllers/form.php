@@ -2,6 +2,9 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 $mail = new PHPMailer;
 $reg = new modForm();
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use Intervention\Image\ImageManagerStatic as Image;
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
 
@@ -48,6 +51,12 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
             $tmp_name = $_FILES['picture']['tmp_name'];
             move_uploaded_file($tmp_name, "$uploads_dir/$imgNameCon");
         }
+
+
+        $image = Image::make("uploads/$imgNameCon")
+            ->resize(300, 200)
+            ->save("images/$imgNameCon", 100);
+
     }
     header('Location: login.html');
 }

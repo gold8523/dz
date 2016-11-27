@@ -7,7 +7,7 @@
 <body>
 <h1>Личный кабинет</h1>
 <div>
-    <img src="<?php echo $images[0] ?>" alt="Изображение">
+    <img src="<?php echo $userIm ?>" alt="Изображение">
     <ul>
         <li>Имя:<?php echo ' ' . $userName; ?></li>
         <li>Возраст:<?php echo ' ' . $userAge; ?></li>

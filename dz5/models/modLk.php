@@ -2,8 +2,10 @@
 
 class modLk extends model {
 
+
     public function selectUser($userId)
     {
+        require dirname(__DIR__) . '/vendor/autoload.php';
 
         $con = $this->con1();
         $user_id = $userId;
@@ -45,6 +47,8 @@ class modLk extends model {
                 $images [] = $item;
             }
         }
+
+        $userIm = 'images/' . $images[0];
 
         $img = [];
         $id = [];
