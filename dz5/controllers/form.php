@@ -2,11 +2,22 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 $mail = new PHPMailer;
 $reg = new modForm();
-require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Intervention\Image\ImageManagerStatic as Image;
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
+
+    $remoteIp = $_SERVER['REMOTE_ADDR'];
+    $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
+    $secret ='6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
+
+    $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+    $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+    if ($resp->isSuccess()) {
+        // verified!
+    } else {
+        $errors = $resp->getErrorCodes();
+    }
 
     $usernameCon = strip_tags($_POST['name']);
     $ageCon = strip_tags($_POST['age']);
