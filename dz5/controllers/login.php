@@ -21,17 +21,17 @@ if ($isAuth) {
 } else {
     if (!empty($_POST['log'])) {
 
-        $remoteIp = $_SERVER['REMOTE_ADDR'];
-        $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
-        $secret ='6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
-
-        $recaptcha = new \ReCaptcha\ReCaptcha($secret);
-        $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
-        if ($resp->isSuccess()) {
-            // verified!
-        } else {
-            $errors = $resp->getErrorCodes();
-        }
+//        $remoteIp = $_SERVER['REMOTE_ADDR'];
+//        $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
+//        $secret ='6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
+//
+//        $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+//        $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+//        if ($resp->isSuccess()) {
+//            // verified!
+//        } else {
+//            $errors = $resp->getErrorCodes();
+//        }
 
         $len = count($logId);
         while ($len > -1) {

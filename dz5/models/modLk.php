@@ -48,44 +48,21 @@ class modLk extends model {
             }
         }
 
-        $userIm = 'images/' . $images[0];
-
-        $img = [];
-        $id = [];
-        $len = count($images);
-        while ($len > -1) {
-            if (!empty($images[$len])) {
-                $gt = gettype($images[$len]);
-                if ($gt == 'integer') {
-                    $id [] = $images[$len];
-                } else {
-                    $img [] = $images[$len];
-                }
-            }
-            $len--;
-        }
-        $i = 0;
 
         $sql = 'SELECT `username`, `age` FROM `users`';
         $result = $con->query($sql);
         $usersAge = $result->fetch_all(MYSQLI_ASSOC);
+
+        $arrAge = [];
         foreach ($usersAge as $value) {
             foreach ($value as $item) {
                 $arrAge [] = $item;
             }
         }
-        $ageUsers = [];
-        $len = count($arrAge);
-        while ($len > 0) {
-            if (($arrAge[$len - 1]) > 18) {
-                $ageUsers [] = $arrAge[$len - 2] . ' ' . $arrAge[$len - 1] . '- совершеннолетний';
-            } else {
-                $ageUsers [] = $arrAge[$len - 2] . ' ' . $arrAge[$len - 1] . '- не совершеннолетний';
-            }
-            $len = $len-2;
-        }
 
-        include dirname(__DIR__) . '\views\lk.php';
+        $resModLk = [$images, $arrAge, $userName, $userAge, $userInfo];
+
+        return $resModLk;
     }
 
     public function addImg($imgNameCon, $userId) {

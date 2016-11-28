@@ -13,26 +13,27 @@ if (empty($url[0]) || $url[0] == 'index.php' || $url[0] == 'index.html') {
     include 'views/index.html';
 } else {
     switch ($url[0]) {
-            case 'lk' :
-            case 'lk.html' :
-            case 'lk.php' :
-            case  'login' :
-            case  'login.html' :
-            case  'login.php' :
-                include 'views/login.html';
-                break;
-            case 'form' :
-            case 'form.html' :
-            case 'form.php' :
-                include 'views/form.html';
-                break;
-            default :
-                $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-                header('HTTP/1.1 404 Not Found');
-                header('Status: 404 Not Found');
+        case 'login.html' :
+        case 'form.html' :
+            $contName = 'views/' . $url[0];
+            $cont->control($contName);
+            break;
+        case 'login.php' :
+        case 'form.php' :
+        case 'lk.php' :
+        case 'addImg.php' :
+        case 'mailer.php' :
+        case 'renameImg.php' :
+            $contName = 'controllers/' . $url[0];
+            $cont->control($contName);
+            break;
+        default :
+            $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+            header('HTTP/1.1 404 Not Found');
+            header('Status: 404 Not Found');
 //            header('Location:'.$host.'404');
-                header('Location: 404.html');
-                break;
+            header('Location: 404.html');
+            break;
         }
 //    $dir = explode('.', $url[2]);
 
