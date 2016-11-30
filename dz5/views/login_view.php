@@ -1,14 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Вход на сайт</title>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-</head>
-<body>
+<h1>Вход на сайт</h1>
 <form action="login.php" method="post">
     <table>
         <tr>
@@ -37,7 +27,7 @@
         <tr>
             <td></td>
             <td>
-                <div class="g-recaptcha" data-sitekey="6LfMIQ0UAAAAAGZFh8lqd847wFEC99H0QcCmugfQ"></div>
+<!--                <div class="g-recaptcha" data-sitekey="6LfMIQ0UAAAAAGZFh8lqd847wFEC99H0QcCmugfQ"></div>-->
             </td>
         </tr>
         <tr>
@@ -48,7 +38,5 @@
     </table>
 </form>
 <p>
-    <a href="index.html">На главную</a>
+    <a href="../index.php">На главную</a>
 </p>
-</body>
-</html>

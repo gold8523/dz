@@ -5,14 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Приветствие</title>
+    <!--    <script src='https://www.google.com/recaptcha/api.js'></script>-->
+    <title>My Site</title>
 </head>
 <body>
-<h1>Добро пожаловать!</h1>
-<p>
-    <a href="login.html">Войдите</a>
-    или
-    <a href="form.html">Зарегистрируйтесь</a>
-</p>
+<?php include $content_view; ?>
 </body>
 </html>

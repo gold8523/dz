@@ -1,14 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <title>Регистрация</title>
-</head>
-<body>
+<h1>Регистрация</h1>
 <form enctype="multipart/form-data" action="form.php" method="post">
     <table>
         <tr>
@@ -61,7 +51,7 @@
         <tr>
             <td></td>
             <td>
-                <div class="g-recaptcha" data-sitekey="6LfMIQ0UAAAAAGZFh8lqd847wFEC99H0QcCmugfQ"></div>
+<!--                <div class="g-recaptcha" data-sitekey="6LfMIQ0UAAAAAGZFh8lqd847wFEC99H0QcCmugfQ"></div>-->
             </td>
         </tr>
         <tr>
@@ -75,6 +65,4 @@
         </tr>
     </table>
 </form>
-<a href="index.php">Вернуться на главную</a>
-</body>
-</html>
+<a href="../index.php">Вернуться на главную</a>

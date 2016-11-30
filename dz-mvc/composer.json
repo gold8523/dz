@@ -1,0 +1,8 @@
+{
+    "require": {
+        "fzaninotto/faker": "1.4.*@dev",
+        "phpmailer/phpmailer": "^5.2",
+        "intervention/image": "^2.3",
+        "google/recaptcha": "~1.1"
+    }
+}

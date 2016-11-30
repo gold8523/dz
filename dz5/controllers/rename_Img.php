@@ -1,6 +1,6 @@
 <?php
 session_start();
-$selUser = new modLk();
+$selUser = new Model_Lk();
 $userId = $_SESSION['user_id'];
 $sel = $selUser->selectUser($userId);
 

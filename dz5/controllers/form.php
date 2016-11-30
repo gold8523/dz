@@ -1,23 +1,28 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
-$mail = new PHPMailer;
-$reg = new modForm();
+require dirname(__DIR__) . '/controller.php';
+require dirname(__DIR__) . '/models/model_form.php';
 
-use Intervention\Image\ImageManagerStatic as Image;
+
+
+$mail = new PHPMailer;
+$reg = new Model_Form();
+
+//use Intervention\Image\ImageManagerStatic as Image;
 
 if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
 
-    $remoteIp = $_SERVER['REMOTE_ADDR'];
-    $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
-    $secret ='6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
-
-    $recaptcha = new \ReCaptcha\ReCaptcha($secret);
-    $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
-    if ($resp->isSuccess()) {
-        // verified!
-    } else {
-        $errors = $resp->getErrorCodes();
-    }
+//    $remoteIp = $_SERVER['REMOTE_ADDR'];
+//    $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
+//    $secret ='6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
+//
+//    $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+//    $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+//    if ($resp->isSuccess()) {
+//        // verified!
+//    } else {
+//        $errors = $resp->getErrorCodes();
+//    }
 
     $usernameCon = strip_tags($_POST['name']);
     $ageCon = strip_tags($_POST['age']);
@@ -28,7 +33,7 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
 
 
     $mail->SMTPDebug = 3;
-    $address = 'champ2013@yandex.ru';
+    $address = 'champ23@mail.ru';
     $sub = 'Новый пользователь';
     $body = 'Зарегистрирован новый пользователь на сайте!';
     $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -47,7 +52,7 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
     $mail->AltBody = $body;
 
 
-    $insReg = $reg->registrationUs($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon);
+    $insReg = $reg->registrationUser($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon);
 
 
     if (!empty($_FILES['picture']['name'])) {
@@ -64,10 +69,15 @@ if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться'
         }
 
 
-        $image = Image::make("uploads/$imgNameCon")
-            ->resize(300, 200)
-            ->save("images/$imgNameCon", 100);
+//        $image = Image::make("uploads/$imgNameCon")
+//            ->resize(300, 200)
+//            ->save("images/$imgNameCon", 100);
 
     }
-    header('Location: login.html');
+    header('Location: login.php');
+} else {
+    $control = new Controller();
+    $content_view = 'form_view.php';
+    $name = 'template_view.php';
+    $control->render($content_view, $name);
 }

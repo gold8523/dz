@@ -1,14 +1,14 @@
 <?php
-//include dirname(__DIR__) . '\mainModel.php';
+include dirname(__DIR__) . '\model.php';
 
-class modForm extends model {
-    public function registrationUs($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon) {
+class Model_Form extends model {
+    public function registrationUser($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon) {
 
         $sqlUsers = 'insert into `users` (`username`, `age`, `info`) value (?, ?, ?)';
         $sqlLogin = 'insert into `login` (`login`, `pass`, `user_id`) value (?, ?, ?)';
         $sqlImages = 'insert into `images` (`img_name`, `user_id`) value (?, ?)';
 
-        $con = $this->con1();
+        $con = $this->connection();
 
         $stmt = $con->prepare($sqlUsers);
 

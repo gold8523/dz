@@ -1,15 +1,17 @@
 <?php
-include dirname(__DIR__) . '\mainModel.php';
+include dirname(__DIR__) . '\model.php';
 
-class modLogin extends model {
-//    public $arrId;
-//    public $arrLogin;
-//    public $arrPass;
+
+class Model_Login extends model {
+
     public function selectLog1() {
 
-        $con = $this->con1();
+        $arrId = [];
+
+        $connect = $this->connection();
+
         $sql = 'SELECT `user_id` FROM `login` ';
-        $result = $con->query($sql);
+        $result = $connect->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
@@ -20,9 +22,13 @@ class modLogin extends model {
     }
 
     public function selectLog2() {
-        $con = $this->con1();
+
+        $arrLogin = [];
+
+        $connect = $this->connection();
+
         $sql = 'SELECT `login` FROM `login` ';
-        $result = $con->query($sql);
+        $result = $connect->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {
@@ -33,9 +39,13 @@ class modLogin extends model {
     }
 
     public function selectLog3() {
-        $con = $this->con1();
+
+        $arrPass = [];
+
+        $connect = $this->connection();
+
         $sql = 'SELECT `pass` FROM `login` ';
-        $result = $con->query($sql);
+        $result = $connect->query($sql);
         $loginAll = $result->fetch_all(MYSQLI_ASSOC);
         foreach ($loginAll as $value) {
             foreach ($value as $item) {

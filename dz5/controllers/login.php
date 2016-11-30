@@ -1,8 +1,8 @@
 <?php
-//include dirname(__DIR__) . '\mainControl.php';
-//include dirname(__DIR__) . '\views\login.html';
 session_start();
 require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/controller.php';
+require dirname(__DIR__) . '/models/model_login.php';
 
 if (!empty($_COOKIE['auth'])) {
     $_SESSION['auth'] = true;
@@ -10,10 +10,10 @@ if (!empty($_COOKIE['auth'])) {
 
 $isAuth = !empty($_SESSION['auth']);
 
-$selLog = new modLogin();
-$logId = $selLog ->selectLog1();
-$log = $selLog ->selectLog2();
-$logPass = $selLog ->selectLog3();
+$selLog = new Model_Login();
+$logId = $selLog->selectLog1();
+$log = $selLog->selectLog2();
+$logPass = $selLog->selectLog3();
 
 if ($isAuth) {
     header("Location: lk.php");
@@ -21,17 +21,17 @@ if ($isAuth) {
 } else {
     if (!empty($_POST['log'])) {
 
-        $remoteIp = $_SERVER['REMOTE_ADDR'];
-        $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
-        $secret ='6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
-
-        $recaptcha = new \ReCaptcha\ReCaptcha($secret);
-        $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
-        if ($resp->isSuccess()) {
-            // verified!
-        } else {
-            $errors = $resp->getErrorCodes();
-        }
+//        $remoteIp = $_SERVER['REMOTE_ADDR'];
+//        $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
+//        $secret = '6LfMIQ0UAAAAALN5yv0aY6kYwiNRZpI_yV75FCAB';
+//
+//        $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+//        $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+//        if ($resp->isSuccess()) {
+//            // verified!
+//        } else {
+//            $errors = $resp->getErrorCodes();
+//        }
 
         $len = count($logId);
         while ($len > -1) {
@@ -49,6 +49,11 @@ if ($isAuth) {
             }
             $len--;
         }
+    } else {
+        $control = new Controller();
+        $content_view = 'login_view.php';
+        $name = 'template_view.php';
+        $control->render($content_view, $name);
     }
 }
 

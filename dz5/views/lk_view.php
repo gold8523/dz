@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Личный Кабинет</title>
-</head>
-<body>
 <h1>Личный кабинет</h1>
 <div>
-    <img src="<?php echo $userIm ?>" alt="Изображение">
+    <img src="../uploads/<?php echo $data[0][0]; ?>" alt="Изображение">
     <ul>
-        <li>Имя:<?php echo ' ' . $userName; ?></li>
-        <li>Возраст:<?php echo ' ' . $userAge; ?></li>
+        <li>Имя:<?php echo ' ' . $data[2]; ?></li>
+        <li>Возраст:<?php echo ' ' . $data[3]; ?></li>
     </ul>
 </div>
 <div>
     <h3>Информация о вас:</h3>
-    <p><?php echo ' ' . $userInfo; ?></p>
+    <p><?php echo ' ' . $data[4]; ?></p>
 </div>
 <div>
     <h3>Добавить изображение:</h3>
-    <form enctype="multipart/form-data" action="addImg.php" method="post">
+    <form enctype="multipart/form-data" action="add_Img.php" method="post">
         <table>
             <tr>
                 <td>Добавьте фотографию:</td>
@@ -41,20 +34,21 @@
 </div>
 <div>
     <h4>Все изображения:</h4>
-    <?php foreach ($img as $item) : ?>
-    <ul>
-        <li>
-            <form action="renameImg.php" method="post">
-                <label><?php echo $item; ?>
-                    <input type="hidden" name="id" value="<?php echo $id[$i]; ?>">
-                    <input type="hidden" name="old" value="<?php echo $item; ?>">
-                    <input type="text" name="edit" value="<?php echo $item; ?>">
-                </label>
-                <input type="submit" name="action" value="Переименовать">
-                <input type="submit" name="action" value="Удалить"><br>
-            </form>
-        </li>
-    </ul>
+    <?php $i = 0; ?>
+    <?php foreach ($data[0] as $item) : ?>
+        <ul>
+            <li>
+                <form action="rename_Img.php" method="post">
+                    <label><?php echo $item; ?>
+                        <input type="hidden" name="id" value="<?php echo $data[5][$i]; ?>">
+                        <input type="hidden" name="old" value="<?php echo $item; ?>">
+                        <input type="text" name="edit" value="<?php echo $item; ?>">
+                    </label>
+                    <input type="submit" name="action" value="Переименовать">
+                    <input type="submit" name="action" value="Удалить"><br>
+                </form>
+            </li>
+        </ul>
         <?php $i++; ?>
     <?php endforeach; ?>
 </div>
@@ -99,11 +93,9 @@
 </div>
 <div>
     <h4>Другие пользователи:</h4>
-    <?php foreach ($ageUsers as $item) : ?>
-    <ul>
+    <?php foreach ($data[1] as $item) : ?>
+        <ul>
         <li><?php echo $item; ?></li>
-    </ul><?php endforeach; ?>
+        </ul><?php endforeach; ?>
 </div>
-<a href="index.php">Вернуться на главную</a>
-</body>
-</html>
+<a href="../index.php">Вернуться на главную</a>

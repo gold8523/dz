@@ -1,6 +1,9 @@
 <?php
 session_start();
-$selUser = new modLk();
+require dirname(__DIR__) . '/controller.php';
+require dirname(__DIR__) . '/models/model_lk.php';
+
+$selUser = new Model_Lk();
 
 if (!empty($_COOKIE['auth'])) {
     $_SESSION['auth'] = true;
@@ -10,6 +13,7 @@ $isAuth = !empty($_SESSION['auth']);
 
 if ($isAuth) {
     $userId = $_SESSION['user_id'];
+
     $sel = $selUser->selectUser($userId);
 
     $resMod = [];
@@ -39,7 +43,8 @@ if ($isAuth) {
         $len--;
     }
 
-    $i = 0;
+    $resMod[0] = $img;
+    $resMod[5] = $id;
 
     $ageUsers = [];
     $len = count($arrAge);
@@ -49,10 +54,16 @@ if ($isAuth) {
         } else {
             $ageUsers [] = $arrAge[$len - 2] . ' ' . $arrAge[$len - 1] . '- не совершеннолетний';
         }
-        $len = $len-2;
+        $len = $len - 2;
     }
 
-    include dirname(__DIR__) . '\views\lk.php';
+    $resMod[1] = $ageUsers;
+
+    $control = new Controller();
+    $content_view = 'lk_view.php';
+    $name = 'template_view.php';
+    $data = $resMod;
+    $control->render($content_view, $name, $data);
 
 } else {
     header("Location: login.php");

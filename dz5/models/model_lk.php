@@ -1,13 +1,12 @@
 <?php
+include dirname(__DIR__) . '\model.php';
 
-class modLk extends model {
+class Model_Lk extends model {
 
 
     public function selectUser($userId)
     {
-        require dirname(__DIR__) . '/vendor/autoload.php';
-
-        $con = $this->con1();
+        $con = $this->connection();
         $user_id = $userId;
 
         $sql = 'SELECT `username` FROM `users` WHERE id = ?';
@@ -68,7 +67,7 @@ class modLk extends model {
     public function addImg($imgNameCon, $userId) {
         $sqlImages = 'insert into `images` (`img_name`, `user_id`) value (?, ?)';
 
-        $con = $this->con1();
+        $con = $this->connection();
 
         $stmt = $con->prepare($sqlImages);
 
@@ -80,7 +79,7 @@ class modLk extends model {
     }
 
     public function renameImg ($imgName, $img_id) {
-        $con = $this->con1();
+        $con = $this->connection();
 
         $sqlImgEdit = 'UPDATE  `images` SET `img_name` = ? WHERE `id` = ?';
         $stmt = $con->prepare($sqlImgEdit);
@@ -94,7 +93,7 @@ class modLk extends model {
     }
 
     public function deleteImg ($imageId) {
-        $con = $this->con1();
+        $con = $this->connection();
 
         $sqlImgDel = 'DELETE  FROM `images` WHERE `id` = ?';
         $stmt = $con->prepare($sqlImgDel);

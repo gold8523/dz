@@ -1,0 +1,8 @@
+{
+    "require": {
+        "google/recaptcha": "~1.1",
+        "fzaninotto/faker": "^1.6",
+        "intervention/image": "^2.3",
+        "phpmailer/phpmailer": "^5.2"
+    }
+}

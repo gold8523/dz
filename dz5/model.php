@@ -2,7 +2,7 @@
 
 class model
 {
-    public function con1()
+    public function connection()
     {
         $config = parse_ini_file('config.ini');
         $host = $config['host'];
