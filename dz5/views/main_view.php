@@ -1,6 +1,6 @@
 <h1>Добро пожаловать!</h1>
 <p>
-    <a href="controllers/login.php">Войдите</a>
+    <a href="login">Войдите</a>
     или
-    <a href="controllers/form.php">Зарегистрируйтесь</a>
+    <a href="?url=form">Зарегистрируйтесь</a>
 </p>

@@ -1,6 +1,6 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
-require dirname(__DIR__) . '/controller.php';
+//require dirname(__DIR__) . '/controller.php';
 require dirname(__DIR__) . '/models/model_form.php';
 
 

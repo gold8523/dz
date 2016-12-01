@@ -1,5 +1,5 @@
 <h1>Вход на сайт</h1>
-<form action="login.php" method="post">
+<form action="?url=login/entry" method="post">
     <table>
         <tr>
             <td>Логин:</td>
@@ -38,5 +38,5 @@
     </table>
 </form>
 <p>
-    <a href="../index.php">На главную</a>
+    <a href=".">На главную</a>
 </p>

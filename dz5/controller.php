@@ -2,9 +2,16 @@
 
 class Controller {
 
-    public function render($content_view, $name, $data = null)
+
+    public $view;
+
+    function __construct()
     {
-        require 'views/' . $name;
+        $this->view = new View();
+    }
+
+    function action() {
+
     }
 }
 
