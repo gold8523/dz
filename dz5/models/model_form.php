@@ -1,5 +1,5 @@
 <?php
-include dirname(__DIR__) . '\model.php';
+//include dirname(__DIR__) . '\model.php';
 
 class Model_Form extends model {
     public function registrationUser($usernameCon, $ageCon, $infoCon, $loginCon, $passCon, $imgNameCon) {

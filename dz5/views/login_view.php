@@ -1,5 +1,5 @@
 <h1>Вход на сайт</h1>
-<form action="?url=login/entry" method="post">
+<form action="login/entry" method="post">
     <table>
         <tr>
             <td>Логин:</td>

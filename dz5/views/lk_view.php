@@ -12,7 +12,7 @@
 </div>
 <div>
     <h3>Добавить изображение:</h3>
-    <form enctype="multipart/form-data" action="add_Img.php" method="post">
+    <form enctype="multipart/form-data" action="lk/add_image" method="post">
         <table>
             <tr>
                 <td>Добавьте фотографию:</td>
@@ -38,7 +38,7 @@
     <?php foreach ($data[0] as $item) : ?>
         <ul>
             <li>
-                <form action="rename_Img.php" method="post">
+                <form action="lk/rename_image" method="post">
                     <label><?php echo $item; ?>
                         <input type="hidden" name="id" value="<?php echo $data[5][$i]; ?>">
                         <input type="hidden" name="old" value="<?php echo $item; ?>">
@@ -54,7 +54,7 @@
 </div>
 <div>
     <h3>Отправить письмо:</h3>
-    <form action="mailer.php" method="post">
+    <form action="lk/send_mail" method="post">
         <table>
             <tr>
                 <td>Введите адрес получателя:</td>
@@ -98,4 +98,4 @@
         <li><?php echo $item; ?></li>
         </ul><?php endforeach; ?>
 </div>
-<a href="../index.php">Вернуться на главную</a>
+<a href="index.php">Вернуться на главную</a>

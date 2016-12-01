@@ -15,13 +15,6 @@ class login extends Controller {
         if (!empty($_COOKIE['auth'])) {
             $_SESSION['auth'] = true;
         }
-
-        $isAuth = !empty($_SESSION['auth']);
-        if ($isAuth) {
-            $_GET['url'] = 'lk';
-//            header("Location:"  . );
-            exit();
-        }
     }
 
     public function entry() {
@@ -31,7 +24,12 @@ class login extends Controller {
         $log = $selLog->selectLog2();
         $logPass = $selLog->selectLog3();
 
-        if (!empty($_POST['log'])) {
+        $isAuth = !empty($_SESSION['auth']);
+        if ($isAuth) {
+            header('Location: ../lk');
+            exit();
+        } else {
+            if (!empty($_POST['log'])) {
 
 //        $remoteIp = $_SERVER['REMOTE_ADDR'];
 //        $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
@@ -45,23 +43,25 @@ class login extends Controller {
 //            $errors = $resp->getErrorCodes();
 //        }
 
-            $len = count($logId);
-            while ($len > -1) {
-                if ($log[$len] == strip_tags($_POST['log']) && $logPass[$len] == strip_tags($_POST['password'])) {
-                    if (!empty($_POST['remem'])) {
-                        setcookie('auth', '1', time() + 1800, '/');
+                $len = count($logId);
+                while ($len > -1) {
+                    if ($log[$len] == strip_tags($_POST['log']) && $logPass[$len] == strip_tags($_POST['password'])) {
+                        if (!empty($_POST['remem'])) {
+                            setcookie('auth', '1', time() + 1800, '/');
+                        }
+                        $_SESSION['auth'] = true;
+                        $_SESSION['user_id'] = $logId[$len];
+                        $_SESSION['login'] = $log[$len];
+                        $isAuth = $_SESSION['auth'];
+                        header('HTTP/1.1 404 Not Found');
+                        header('Location: ../lk');
+                        exit();
                     }
-                    $_SESSION['auth'] = true;
-                    $_SESSION['user_id'] = $logId[$len];
-                    $_SESSION['login'] = $log[$len];
-                    $isAuth = $_SESSION['auth'];
-//                    header('HTTP/1.1 404 Not Found');
-                    header('Location: ?url=lk');
-//                    exit();
+                    $len--;
                 }
-                $len--;
             }
         }
+
     }
 }
 

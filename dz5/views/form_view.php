@@ -1,5 +1,5 @@
 <h1>Регистрация</h1>
-<form enctype="multipart/form-data" action="form.php" method="post">
+<form enctype="multipart/form-data" action="form/registration" method="post">
     <table>
         <tr>
             <td>Введите логин:</td>
@@ -65,4 +65,4 @@
         </tr>
     </table>
 </form>
-<a href="../index.php">Вернуться на главную</a>
+<a href="index.php">Вернуться на главную</a>
