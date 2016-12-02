@@ -2,6 +2,7 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 //require dirname(__DIR__) . '/controller.php';
 require dirname(__DIR__) . '/models/model_form.php';
+//use Intervention\Image\ImageManagerStatic as Image;
 
 class form extends Controller  {
 
@@ -14,8 +15,6 @@ class form extends Controller  {
     public function registration() {
         $mail = new PHPMailer;
         $reg = new Model_Form();
-
-//      use Intervention\Image\ImageManagerStatic as Image;
 
         if (!empty($_POST) && $_POST['action'] == 'Зарегистрироваться') {
 
@@ -75,10 +74,9 @@ class form extends Controller  {
                     move_uploaded_file($tmp_name, "$uploads_dir/$imgNameCon");
                 }
 
-
-//          $image = Image::make("uploads/$imgNameCon")
-//            ->resize(300, 200)
-//            ->save("images/$imgNameCon", 100);
+//                $image = Image::make("uploads/$imgNameCon")
+//                    ->resize(300, 200)
+//                    ->save("images/$imgNameCon", 100);
 
             }
             header('Location: ../login');

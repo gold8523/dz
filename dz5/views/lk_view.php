@@ -1,6 +1,6 @@
 <h1>Личный кабинет</h1>
 <div>
-    <img src="../uploads/<?php echo $data[0][0]; ?>" alt="Изображение">
+    <img src="images/<?php echo $data[0][0]; ?>" alt="Изображение">
     <ul>
         <li>Имя:<?php echo ' ' . $data[2]; ?></li>
         <li>Возраст:<?php echo ' ' . $data[3]; ?></li>

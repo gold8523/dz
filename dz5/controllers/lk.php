@@ -3,6 +3,7 @@ session_start();
 //require dirname(__DIR__) . '/controller.php';
 require dirname(__DIR__) . '/models/model_lk.php';
 require dirname(__DIR__) . '/vendor/autoload.php';
+//use Intervention\Image\ImageManagerStatic as Image;
 
 class lk extends Controller {
 
@@ -162,8 +163,8 @@ class lk extends Controller {
 
         if (isset($_POST['action']) && $_POST['action'] == 'Добавить') {
             if ($_FILES['newPic']['type'] != "image/gif" && $_FILES['newPic']['type'] != "image/jpeg"
-                && $_FILES['newPic']['type'] != "image/png"
-            ) {
+                && $_FILES['newPic']['type'] != "image/png")
+            {
                 echo 'Выберете изображение формата jpeg, png или gif.';
             } else {
                 $imgNameCon = strip_tags($_SESSION['login']) . '_' . $_FILES['newPic']['name'];
@@ -172,9 +173,14 @@ class lk extends Controller {
                 $tmp_name = $_FILES['newPic']['tmp_name'];
                 move_uploaded_file($tmp_name, "$uploads_dir/$imgNameCon");
 
+//                $image = Image::make("images/$imgNameCon")
+//                    ->resize(300, 200)
+//                    ->save("images/$imgNameCon", 100);
+
                 $add = $selUser->addImg($imgNameCon, $userId);
                 header('Location: .');
             }
+
         }
     }
 

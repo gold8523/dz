@@ -1,10 +1,11 @@
 <?php
-//session_start();
+session_start();
 require dirname(__DIR__) . '/vendor/autoload.php';
 //require dirname(__DIR__) . '/controller.php';
 require dirname(__DIR__) . '/models/model_login.php';
 
-class login extends Controller {
+class login extends Controller
+{
 
 
     public function action()
@@ -15,21 +16,38 @@ class login extends Controller {
         if (!empty($_COOKIE['auth'])) {
             $_SESSION['auth'] = true;
         }
-    }
-
-    public function entry() {
-
-        $selLog = new Model_Login();
-        $logId = $selLog->selectLog1();
-        $log = $selLog->selectLog2();
-        $logPass = $selLog->selectLog3();
-
         $isAuth = !empty($_SESSION['auth']);
         if ($isAuth) {
             header('Location: ../lk');
             exit();
-        } else {
+        }
+    }
+
+    public function entry() {
+
             if (!empty($_POST['log'])) {
+
+                $selLog = new Model_Login();
+                $pass = $_POST['password'];
+                $logAll = $selLog->login_pass($pass);
+
+                if ($logAll[0]['login'] == strip_tags($_POST['log']) && $logAll[0]['pass'] == strip_tags($_POST['password'] && !empty($_POST['remem'])){
+
+                    $_SESSION['auth'] = true;
+                    $_SESSION['user_id'] = $logAll[0]['user_id'];
+                    $_SESSION['login'] = $logAll[0]['login'];
+                    $isAuth = $_SESSION['auth'];
+                    setcookie('auth', '1', time() + 1800, '/');
+                    header('HTTP/1.1 404 Not Found');
+                    header('Location: ../lk');
+                    exit();
+                } else {
+                    echo 'Неверный логин или пароль!';
+                }
+
+            } else {
+                echo 'Введите логин и пароль!';
+            }
 
 //        $remoteIp = $_SERVER['REMOTE_ADDR'];
 //        $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
@@ -42,27 +60,8 @@ class login extends Controller {
 //        } else {
 //            $errors = $resp->getErrorCodes();
 //        }
-
-                $len = count($logId);
-                while ($len > -1) {
-                    if ($log[$len] == strip_tags($_POST['log']) && $logPass[$len] == strip_tags($_POST['password'])) {
-                        if (!empty($_POST['remem'])) {
-                            setcookie('auth', '1', time() + 1800, '/');
-                        }
-                        $_SESSION['auth'] = true;
-                        $_SESSION['user_id'] = $logId[$len];
-                        $_SESSION['login'] = $log[$len];
-                        $isAuth = $_SESSION['auth'];
-                        header('HTTP/1.1 404 Not Found');
-                        header('Location: ../lk');
-                        exit();
-                    }
-                    $len--;
-                }
-            }
-        }
-
     }
 }
+
 
 
